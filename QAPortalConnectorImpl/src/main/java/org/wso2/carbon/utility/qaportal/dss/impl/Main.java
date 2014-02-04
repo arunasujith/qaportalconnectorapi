@@ -12,6 +12,6 @@ public class Main {
         QAPortal portal = new QAPortalDSSServiceClient("https","192.168.3.24",9443,
                 "admin", "admin");
 
-        portal.getProducts();
+        portal.getProductVersions(10);
     }
 }

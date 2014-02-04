@@ -8,6 +8,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.wso2.carbon.utility.qaportal.QAPortal;
 import org.wso2.carbon.utility.qaportal.dss.mapping.model.WSO2_QAP_PRODUCT;
+import org.wso2.carbon.utility.qaportal.dss.mapping.model.WSO2_QAP_PRODUCT_VERSION;
 import org.wso2.carbon.utility.qaportal.dss.util.HttpClientWrapper;
 import org.wso2.carbon.utility.qaportal.dss.util.JsonUtil;
 import org.wso2.carbon.utility.qaportal.dss.util.Services;
@@ -60,12 +61,35 @@ public class QAPortalDSSServiceClient implements QAPortal{
     }
 
     @Override
-    public List<ProductVersion> getProductVersions(int i) {
-        return null;
+    public List<ProductVersion> getProductVersions(int productId) {
+
+        List<ProductVersion> productVersionList = new ArrayList<ProductVersion>();
+
+        List<WSO2_QAP_PRODUCT_VERSION> productVersionWrapperList = new ArrayList<WSO2_QAP_PRODUCT_VERSION>();
+
+        try {
+            String json = client.get(Services.PRODUCT_VERSION_SERVICE, "get/version_by_id/"+productId);
+
+            JsonNode node = JsonUtil.getNamedNode(json,"WSO2_QAP_PRODUCT_VERSIONCollection");
+
+            productVersionWrapperList = JsonUtil.getPOJOListFromJson(node.path("WSO2_QAP_PRODUCT_VERSION"),new TypeReference<List<WSO2_QAP_PRODUCT_VERSION>>() {});
+
+        }
+        catch (JsonMappingException jme){
+            jme.printStackTrace();
+        }
+        catch (JsonParseException jpe){
+            jpe.printStackTrace();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return productVersionList;
     }
 
     @Override
-    public List<ProductBuild> getProductVersionBuilds(int i) {
+    public List<ProductBuild> getProductVersionBuilds(int versionId) {
         return null;
     }
 }

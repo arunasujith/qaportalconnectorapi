@@ -57,25 +57,6 @@ public class JsonUtil {
         return list;
     }
 
-    public static boolean isValidJSON(final String json) {
-
-        boolean valid = false;
-
-        try {
-            final JsonParser parser = new ObjectMapper().getJsonFactory()
-                    .createJsonParser(json);
-            while (parser.nextToken() != null) {
-            }
-            valid = true;
-        } catch (JsonParseException jpe) {
-            jpe.printStackTrace();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
-
-        return valid;
-    }
-
     public static JsonNode getNamedNode(String jsonString, String name) throws IOException {
 
         JsonNode element = null;
