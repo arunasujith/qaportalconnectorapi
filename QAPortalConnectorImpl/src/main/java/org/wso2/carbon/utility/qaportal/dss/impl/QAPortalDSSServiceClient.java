@@ -1,9 +1,13 @@
 package org.wso2.carbon.utility.qaportal.dss.impl;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.wso2.carbon.utility.qaportal.QAPortal;
-import org.wso2.carbon.utility.qaportal.dss.mapping.model.ProductWrapper;
+import org.wso2.carbon.utility.qaportal.dss.mapping.model.WSO2_QAP_PRODUCT;
 import org.wso2.carbon.utility.qaportal.dss.util.HttpClientWrapper;
 import org.wso2.carbon.utility.qaportal.dss.util.JsonUtil;
 import org.wso2.carbon.utility.qaportal.dss.util.Services;
@@ -32,12 +36,23 @@ public class QAPortalDSSServiceClient implements QAPortal{
     public List<Product> getProducts() {
         List<Product> productList = new ArrayList<Product>();
 
-        List<ProductWrapper> productWrapperList = new ArrayList<ProductWrapper>();
+        List<WSO2_QAP_PRODUCT> productWrapperList = new ArrayList<WSO2_QAP_PRODUCT>();
 
         try {
             String json = client.get(Services.PRODUCT_SERVICE, "view/products");
-            //productWrapperList = JsonUtil.getPOJOListFromJson(json, ProductWrapper.class);
-        } catch (IOException e) {
+
+            JsonNode node = JsonUtil.getNamedNode(json,"WSO2_QAP_PRODUCTCollection");
+
+             productWrapperList = JsonUtil.getPOJOListFromJson(node.path("WSO2_QAP_PRODUCT"),new TypeReference<List<WSO2_QAP_PRODUCT>>() {});
+
+        }
+        catch (JsonMappingException jme){
+            jme.printStackTrace();
+        }
+        catch (JsonParseException jpe){
+            jpe.printStackTrace();
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
 

@@ -10,7 +10,7 @@ public class Main {
     public static void main(String args[]){
 
         QAPortal portal = new QAPortalDSSServiceClient("https","192.168.3.24",9443,
-                "admian", "admin");
+                "admin", "admin");
 
         portal.getProducts();
     }

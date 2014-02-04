@@ -1,8 +1,12 @@
 package org.wso2.carbon.utility.qaportal.dss.util;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.wso2.carbon.utility.qaportal.dss.mapping.model.WSO2_QAP_PRODUCT;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -38,12 +42,12 @@ public class JsonUtil {
         return pojo;
     }
 
-    public static <T> List<T> getPOJOListFromJson(String jsonString, Class<T> clz) throws IOException {
+    public static <T> List<T> getPOJOListFromJson(JsonNode node, TypeReference<List<T>> type) throws IOException {
 
        List<T> list = new ArrayList<T>();
 
         try {
-            list = mapper.readValue(jsonString, List.class) ;
+            list = mapper.readValue(node.traverse(), type) ;
 
         } catch (IOException e) {
 
@@ -53,20 +57,40 @@ public class JsonUtil {
         return list;
     }
 
-    public static String getNamedElementAsText(String jsonString, String name) throws IOException {
+    public static boolean isValidJSON(final String json) {
 
-        String json = "{}";
+        boolean valid = false;
+
+        try {
+            final JsonParser parser = new ObjectMapper().getJsonFactory()
+                    .createJsonParser(json);
+            while (parser.nextToken() != null) {
+            }
+            valid = true;
+        } catch (JsonParseException jpe) {
+            jpe.printStackTrace();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+
+        return valid;
+    }
+
+    public static JsonNode getNamedNode(String jsonString, String name) throws IOException {
+
+        JsonNode element = null;
 
         try {
             JsonNode root = mapper.readTree(jsonString);
 
-            json = root.get(name).asText();
+            element =  root.path(name);
 
         } catch (IOException e) {
 
             throw e;
         }
 
-        return json;
+        return element;
     }
+
 }
