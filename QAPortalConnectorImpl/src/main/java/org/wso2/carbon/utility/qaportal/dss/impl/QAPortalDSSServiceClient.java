@@ -11,6 +11,7 @@ import org.wso2.carbon.utility.qaportal.dss.mapping.model.WSO2_QAP_PRODUCT;
 import org.wso2.carbon.utility.qaportal.dss.mapping.model.WSO2_QAP_PRODUCT_VERSION;
 import org.wso2.carbon.utility.qaportal.dss.util.HttpClientWrapper;
 import org.wso2.carbon.utility.qaportal.dss.util.JsonUtil;
+import org.wso2.carbon.utility.qaportal.dss.util.Resources;
 import org.wso2.carbon.utility.qaportal.dss.util.Services;
 import org.wso2.carbon.utility.qaportal.model.Product;
 import org.wso2.carbon.utility.qaportal.model.ProductBuild;
@@ -40,9 +41,9 @@ public class QAPortalDSSServiceClient implements QAPortal{
         List<WSO2_QAP_PRODUCT> productWrapperList = new ArrayList<WSO2_QAP_PRODUCT>();
 
         try {
-            String json = client.get(Services.PRODUCT_SERVICE, "view/products");
+            String json = client.get(Services.PRODUCT_SERVICE, Resources.ALL_PRODUCTS);
 
-            JsonNode node = JsonUtil.getNamedNode(json,"WSO2_QAP_PRODUCTCollection");
+            JsonNode node = JsonUtil.getNamedNode(json, "WSO2_QAP_PRODUCTCollection");
 
              productWrapperList = JsonUtil.getPOJOListFromJson(node.path("WSO2_QAP_PRODUCT"),new TypeReference<List<WSO2_QAP_PRODUCT>>() {});
 
@@ -68,7 +69,7 @@ public class QAPortalDSSServiceClient implements QAPortal{
         List<WSO2_QAP_PRODUCT_VERSION> productVersionWrapperList = new ArrayList<WSO2_QAP_PRODUCT_VERSION>();
 
         try {
-            String json = client.get(Services.PRODUCT_VERSION_SERVICE, "get/version_by_id/"+productId);
+            String json = client.get(Services.PRODUCT_VERSION_SERVICE, Resources.PRODUCT_VERSIONS+productId);
 
             JsonNode node = JsonUtil.getNamedNode(json,"WSO2_QAP_PRODUCT_VERSIONCollection");
 

@@ -11,10 +11,13 @@ public class Sample {
 
     private String description;
 
-    public Sample(int sampleId, String description, String sampleName) {
+    private String uRL;
+
+    public Sample(int sampleId, String description, String sampleName, String uRL) {
         this.sampleId = sampleId;
         this.description = description;
         this.sampleName = sampleName;
+        this.uRL = uRL;
     }
 
     public int getSampleId() {
@@ -39,5 +42,13 @@ public class Sample {
 
     public void setSampleName(String sampleName) {
         this.sampleName = sampleName;
+    }
+
+    public String getuRL() {
+        return uRL;
+    }
+
+    public void setuRL(String uRL) {
+        this.uRL = uRL;
     }
 }
