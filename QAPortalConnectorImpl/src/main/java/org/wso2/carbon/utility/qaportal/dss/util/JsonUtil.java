@@ -2,6 +2,7 @@ package org.wso2.carbon.utility.qaportal.dss.util;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -80,6 +81,19 @@ public class JsonUtil {
         }
 
         return element;
+    }
+
+    public static String getJsonFromPojo(Object obj){
+
+        String value = "{}";
+
+        try {
+            value = mapper.writeValueAsString(obj);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return value;
     }
 
 }

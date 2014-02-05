@@ -13,9 +13,7 @@ import org.wso2.carbon.utility.qaportal.dss.util.HttpClientWrapper;
 import org.wso2.carbon.utility.qaportal.dss.util.JsonUtil;
 import org.wso2.carbon.utility.qaportal.dss.util.Resources;
 import org.wso2.carbon.utility.qaportal.dss.util.Services;
-import org.wso2.carbon.utility.qaportal.model.Product;
-import org.wso2.carbon.utility.qaportal.model.ProductBuild;
-import org.wso2.carbon.utility.qaportal.model.ProductVersion;
+import org.wso2.carbon.utility.qaportal.model.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -89,7 +87,57 @@ public class QAPortalDSSServiceClient implements QAPortal{
     }
 
     @Override
-    public List<ProductBuild> getProductVersionBuilds(int versionId) {
+    public List<ProductBuild> getProductBuilds(int productVersionId) {
+        return null;
+    }
+
+    @Override
+    public List<Feature> getProductFeatures(int productVersionId) {
+        return null;
+    }
+
+    @Override
+    public ProductBuild getProductBuild(int productBuildId) {
+        return null;
+    }
+
+    @Override
+    public Product getProductById(int productId) {
+        return null;
+    }
+
+    @Override
+    public TestPlan getTestPlanById(int testPlanId) {
+        return null;
+    }
+
+    @Override
+    public List<TestSuit> getTestSuitsByTestPlanId(int testPlanId) {
+        return null;
+    }
+
+    @Override
+    public List<TestSuitScenarioAssociation> getTestScenariosByTestSuitId(int testSuitId) {
+        return null;
+    }
+
+    @Override
+    public TestScenario getTestScenarioById(int testScenarioId) {
+        return null;
+    }
+
+    @Override
+    public List<TestCase> getTestCasesByTestScenarioId(int testScenarioId) {
+        return null;
+    }
+
+    @Override
+    public List<TestResult> getTestResultsByBuildId(int productBuildId) {
+        return null;
+    }
+
+    @Override
+    public TestCase getTestCaseById(int testCaseId) {
         return null;
     }
 }
