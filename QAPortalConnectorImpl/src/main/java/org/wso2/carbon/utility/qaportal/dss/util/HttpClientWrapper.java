@@ -93,8 +93,6 @@ public class HttpClientWrapper {
         }
         catch (SSLHandshakeException ex)
         {
-            ex.printStackTrace();
-
             log.warn("QAPortalDSSClient : HttpClientWrapper - Error executing the request." +
                     "\t Retrying to execute with a custom ssl context.");
 

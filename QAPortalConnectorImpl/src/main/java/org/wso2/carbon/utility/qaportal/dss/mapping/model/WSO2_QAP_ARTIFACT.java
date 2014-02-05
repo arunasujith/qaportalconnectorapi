@@ -5,7 +5,7 @@ import org.wso2.carbon.utility.qaportal.model.Artifact;
 /**
  * Created by kavith on 2/5/14.
  */
-public class WSO2_QAP_ARTIFACT {
+public class WSO2_QAP_ARTIFACT implements MappingModel{
 
     public int WSO2_QAP_ARTIFACT_ID;
 

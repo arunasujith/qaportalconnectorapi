@@ -36,16 +36,16 @@ public class QAPortalDSSServiceClient implements QAPortal{
     }
     @Override
     public List<Product> getProducts() {
-        List<Product> productList = new ArrayList<Product>();
 
-        List<WSO2_QAP_PRODUCT> productWrapperList = new ArrayList<WSO2_QAP_PRODUCT>();
+        List<Product> productList = new ArrayList<Product>();
 
         try {
             String json = client.get(Services.PRODUCT_SERVICE, Resources.ALL_PRODUCTS);
 
             JsonNode node = JsonUtil.getNamedNode(json, "WSO2_QAP_PRODUCTCollection");
 
-             productWrapperList = JsonUtil.getPOJOListFromJson(node.path("WSO2_QAP_PRODUCT"),new TypeReference<List<WSO2_QAP_PRODUCT>>() {});
+            productList = JsonUtil.getPOJOListFromJson(node.path("WSO2_QAP_PRODUCT"),
+                                        new TypeReference<List<WSO2_QAP_PRODUCT>>() {}, Product.class);
 
         }
         catch (JsonMappingException jme){
@@ -66,14 +66,13 @@ public class QAPortalDSSServiceClient implements QAPortal{
 
         List<ProductVersion> productVersionList = new ArrayList<ProductVersion>();
 
-        List<WSO2_QAP_PRODUCT_VERSION> productVersionWrapperList = new ArrayList<WSO2_QAP_PRODUCT_VERSION>();
-
         try {
             String json = client.get(Services.PRODUCT_VERSION_SERVICE, Resources.PRODUCT_VERSIONS+productId);
 
             JsonNode node = JsonUtil.getNamedNode(json,"WSO2_QAP_PRODUCT_VERSIONCollection");
 
-            productVersionWrapperList = JsonUtil.getPOJOListFromJson(node.path("WSO2_QAP_PRODUCT_VERSION"),new TypeReference<List<WSO2_QAP_PRODUCT_VERSION>>() {});
+            productVersionList = JsonUtil.getPOJOListFromJson(node.path("WSO2_QAP_PRODUCT_VERSION"),
+                                        new TypeReference<List<WSO2_QAP_PRODUCT_VERSION>>() {}, ProductVersion.class);
 
         }
         catch (JsonMappingException jme){

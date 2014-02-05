@@ -5,7 +5,7 @@ import org.wso2.carbon.utility.qaportal.model.TestResult;
 /**
  * Created by kavith on 2/5/14.
  */
-public class WSO2_QAP_TEST_RESULT {
+public class WSO2_QAP_TEST_RESULT implements MappingModel {
 
     public int WSO2_QAP_TEST_RESULT_ID;
 

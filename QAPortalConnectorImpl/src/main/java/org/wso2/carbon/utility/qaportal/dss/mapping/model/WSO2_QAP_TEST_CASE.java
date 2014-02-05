@@ -5,7 +5,7 @@ import org.wso2.carbon.utility.qaportal.model.TestCase;
 /**
  * Created by kavith on 2/5/14.
  */
-public class WSO2_QAP_TEST_CASE {
+public class WSO2_QAP_TEST_CASE implements MappingModel {
 
     public int WSO2_QAP_TEST_CASE_ID;
 
