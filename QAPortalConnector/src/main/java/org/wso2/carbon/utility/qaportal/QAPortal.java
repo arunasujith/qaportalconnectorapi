@@ -14,7 +14,7 @@ public interface QAPortal {
      *
      * @return  List of Products
      */
-    public List<Product> getProducts();
+    public List<Product> getAllProducts();
 
     /**
      * Get product versions for a particular product
@@ -23,7 +23,7 @@ public interface QAPortal {
      *
      * @return
      */
-    public List<ProductVersion> getProductVersions(int productId);
+    public List<ProductVersion> getProductVersionsByProductId(int productId);
 
     /**
      * Get product builds for a particular product version
@@ -32,7 +32,7 @@ public interface QAPortal {
      *
      * @return
      */
-    public List<ProductBuild> getProductBuilds(int productVersionId);
+    public List<ProductBuild> getProductBuildsByVersionId(int productVersionId);
 
     /**
      * Get features of a particular product version
@@ -41,7 +41,7 @@ public interface QAPortal {
      *
      * @return A list of Features
      */
-    public List<Feature> getProductFeatures(int productVersionId);
+    public List<Feature> getProductFeaturesByVersion(int productVersionId);
 
     /**
      * Get a product build entity by product build id

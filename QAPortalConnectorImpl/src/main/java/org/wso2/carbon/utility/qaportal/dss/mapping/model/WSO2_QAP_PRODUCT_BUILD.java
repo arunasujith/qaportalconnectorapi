@@ -9,7 +9,7 @@ import java.util.Date;
  */
 public class WSO2_QAP_PRODUCT_BUILD implements MappingModel {
 
-    public int WSO2_QAP_PRODUCT_BUILD_ID;
+    public int WSO2_QAP_BUILD_ID;
 
     public int WSO2_QAP_PRODUCT_VERSION_ID;
 
@@ -21,6 +21,6 @@ public class WSO2_QAP_PRODUCT_BUILD implements MappingModel {
 
     public ProductBuild getEntity(){
 
-        return new ProductBuild(WSO2_QAP_PRODUCT_BUILD_ID, WSO2_QAP_BUILD_NAME, WSO2_QAP_PRODUCT_VERSION_ID, WSO2_QAP_RELEASE_DATE, WSO2_QAP_TEST_PLAN_ID);
+        return new ProductBuild(WSO2_QAP_BUILD_ID, WSO2_QAP_BUILD_NAME, WSO2_QAP_PRODUCT_VERSION_ID, WSO2_QAP_RELEASE_DATE, WSO2_QAP_TEST_PLAN_ID);
     }
 }

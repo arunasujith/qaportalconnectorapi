@@ -93,11 +93,11 @@ public class HttpClientWrapper {
         }
         catch (SSLHandshakeException ex)
         {
-            log.warn("QAPortalDSSClient : HttpClientWrapper - Error executing the request." +
+            log.debug("QAPortalDSSClient : HttpClientWrapper - Error executing the request." +
                     "\t Retrying to execute with a custom ssl context.");
 
             // Host uses a certificate which is not issued by a certification authority.
-            // Eg. Testing servers are hosted locally
+            // Testing servers are hosted locally
             try
             {
                 response = createClientWithCustomSSLContext().execute(request);

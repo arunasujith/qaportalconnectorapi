@@ -11,6 +11,8 @@ public class WSO2_QAP_TEST_RESULT implements MappingModel {
 
     public int WSO2_QAP_TEST_PLAN_ID;
 
+    public String WSO2_QAP_TEST_CASE_NAME;
+
     public int WSO2_QAP_TEST_CASE_ID;
 
     public String WSO2_QAP_TEST_STATUS;

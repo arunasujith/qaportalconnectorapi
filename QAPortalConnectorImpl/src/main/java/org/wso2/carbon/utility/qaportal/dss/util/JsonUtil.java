@@ -11,6 +11,8 @@ import org.wso2.carbon.utility.qaportal.dss.mapping.model.MappingModel;
 import org.wso2.carbon.utility.qaportal.dss.mapping.model.WSO2_QAP_PRODUCT;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +27,8 @@ public class JsonUtil {
 
     static {
         mapper = new ObjectMapper();
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'+'HH:mm");
+        mapper.setDateFormat(df);
     }
 
     public static <T>  T getPOJOFromJson(String jsonString, Class<T> clz) throws IOException {
@@ -44,13 +48,13 @@ public class JsonUtil {
         return pojo;
     }
 
-    public static <T,E> List<E> getPOJOListFromJson(JsonNode node, TypeReference<List<T>> type,Class<E> entity) throws IOException {
+    public static <T,E> List<E> getPOJOListFromJson(JsonNode node, TypeReference<List<T>> listType,Class<E> entity) throws IOException {
 
         List<T> list = new ArrayList<T>();
         List<E> entityList = new ArrayList<E>();
 
         try {
-            list = mapper.readValue(node.traverse(), type) ;
+            list = mapper.readValue(node.traverse(), listType) ;
 
         } catch (IOException e) {
 
