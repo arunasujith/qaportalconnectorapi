@@ -13,7 +13,9 @@ public class Resources {
 
     public static final String BUILDS_BY_VERSION_ID = "get/builds_by_versionid/";
 
-    public static final String FEATURES_BY_VERSSION = "view/features_in_version/";
+    public static final String FEATURES_BY_VERSION = "view/features_in_version/";
+
+    public static final String TEST_SUITS_BY_TEST_PLAN = "get/testsuits_by_testplanid/";
 
     private Resources(){}
 }

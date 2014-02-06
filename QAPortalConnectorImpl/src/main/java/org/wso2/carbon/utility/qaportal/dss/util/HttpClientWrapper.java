@@ -89,6 +89,7 @@ public class HttpClientWrapper {
         try
         {
             response = createClient().execute(request);
+
             log.debug("QAPortalDSSClient : HttpClientWrapper - Successfully executed the request to " + url + ".");
         }
         catch (SSLHandshakeException ex)
@@ -107,6 +108,7 @@ public class HttpClientWrapper {
                 e.printStackTrace();
             }
         }
+
         jsonResponse = EntityUtils.toString(response.getEntity());
 
         return jsonResponse;

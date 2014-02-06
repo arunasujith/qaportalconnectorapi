@@ -7,7 +7,7 @@ import org.wso2.carbon.utility.qaportal.model.Product;
 import java.util.List;
 
 /**
- * Created by kavith on 2/3/14.
+ * Created by kavith on 2/3/14.+
  */
 public class Main {
 
@@ -23,8 +23,10 @@ public class Main {
         print("Builds details for product version id 30 " ,   portal.getProductBuildsByVersionId(30)                     );
 
         print("Test results for build id 20 ",                portal.getTestResultsByBuildId(20)                         );
-         
+
         print("Features by product version id 30",            portal.getProductFeaturesByVersion(30)                     );
+
+        print("Test Suits by test plan id 8",                 portal.getTestSuitsByTestPlanId(8)                         );
     }
 
 
