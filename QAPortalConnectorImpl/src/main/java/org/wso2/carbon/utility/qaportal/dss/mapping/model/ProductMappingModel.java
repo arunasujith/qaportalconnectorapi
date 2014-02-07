@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * Created by kavith on 2/3/14.
  */
-public class WSO2_QAP_PRODUCT implements MappingModel{
+public class ProductMappingModel implements MappingModel{
 
     public int WSO2_QAP_PRODUCT_ID;
 

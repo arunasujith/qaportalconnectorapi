@@ -3,7 +3,7 @@ package org.wso2.carbon.utility.qaportal.dss.mapping.model;
 /**
  * Created by kavith on 2/5/14.
  */
-public class WSO2_QAP_SAMPLE implements MappingModel {
+public class SampleMappingModel implements MappingModel {
 
     public int WSO2_QAP_SAMPLE_ID;
 

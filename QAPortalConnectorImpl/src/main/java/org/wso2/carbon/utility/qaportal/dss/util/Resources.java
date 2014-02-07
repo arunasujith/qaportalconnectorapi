@@ -25,5 +25,9 @@ public class Resources {
 
     public static final String TEST_SCENARIO_BY_ID = "view/testscenario_with_id/";
 
+    public static final String TEST_CASE_BY_ID = "view/testcase_by_id/";
+
+    public static final String TEST_CASES_BY_SCENARIO = "view/testscases_by_Scenario_Id/";
+
     private Resources(){}
 }

@@ -5,7 +5,7 @@ import org.wso2.carbon.utility.qaportal.model.ProductVersion;
 /**
  * Created by kavith on 2/4/14.
  */
-public class WSO2_QAP_PRODUCT_VERSION implements MappingModel {
+public class ProductVersionMappingModel implements MappingModel {
 
     public int WSO2_QAP_PRODUCT_VERSION_ID;
 

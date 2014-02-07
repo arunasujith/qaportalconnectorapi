@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * Created by kavith on 2/4/14.
  */
-public class WSO2_QAP_PRODUCT_BUILD implements MappingModel {
+public class ProductBuildMappingModel implements MappingModel {
 
     public int WSO2_QAP_BUILD_ID;
 

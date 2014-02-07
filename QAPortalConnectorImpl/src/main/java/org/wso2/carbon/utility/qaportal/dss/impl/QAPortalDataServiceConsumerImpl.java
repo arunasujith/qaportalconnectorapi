@@ -44,7 +44,7 @@ public class QAPortalDataServiceConsumerImpl implements QAPortal{
 
             JsonNode arrayNode = JsonUtil.getNamedNode(json, "WSO2_QAP_PRODUCTCollection").path("WSO2_QAP_PRODUCT");
 
-            productList = JsonUtil.getPOJOListFromJson(arrayNode, WSO2_QAP_PRODUCT.class, Product.class);
+            productList = JsonUtil.getPOJOListFromJson(arrayNode, ProductMappingModel.class, Product.class);
 
         }
         catch (IOException e){
@@ -68,7 +68,7 @@ public class QAPortalDataServiceConsumerImpl implements QAPortal{
             JsonNode arrayNode = JsonUtil.getNamedNode(json,"WSO2_QAP_PRODUCT_VERSIONCollection")
                                                                                 .path("WSO2_QAP_PRODUCT_VERSION");
 
-            productVersionList = JsonUtil.getPOJOListFromJson(arrayNode, WSO2_QAP_PRODUCT_VERSION.class,
+            productVersionList = JsonUtil.getPOJOListFromJson(arrayNode, ProductVersionMappingModel.class,
                                                                                         ProductVersion.class);
         }
         catch (IOException e) {
@@ -91,7 +91,7 @@ public class QAPortalDataServiceConsumerImpl implements QAPortal{
             JsonNode arrayNode = JsonUtil.getNamedNode(json, "WSO2_QAP_PRODUCT_BUILDCollection")
                                                                                     .path("WSO2_QAP_PRODUCT_BUILD");
 
-            productBuildsList = JsonUtil.getPOJOListFromJson(arrayNode, WSO2_QAP_PRODUCT_BUILD.class,
+            productBuildsList = JsonUtil.getPOJOListFromJson(arrayNode, ProductBuildMappingModel.class,
                     ProductBuild.class);
         }
         catch (IOException e) {
@@ -113,7 +113,7 @@ public class QAPortalDataServiceConsumerImpl implements QAPortal{
 
             JsonNode arrayNode = JsonUtil.getNamedNode(json, "WSO2_QAP_FEATURECollection").path("WSO2_QAP_FEATURE");
 
-            featureList = JsonUtil.getPOJOListFromJson(arrayNode, WSO2_QAP_FEATURE.class, Feature.class);
+            featureList = JsonUtil.getPOJOListFromJson(arrayNode, FeatureMappingModel.class, Feature.class);
         }
         catch (IOException e) {
 
@@ -137,7 +137,7 @@ public class QAPortalDataServiceConsumerImpl implements QAPortal{
 
             ObjectMapper mapper = JsonUtil.getDefaultMapper().setDateFormat(JsonUtil.DATE_FORMAT_II);
 
-            productBuild = JsonUtil.getPOJOFromJson(mapper, arrayNode, WSO2_QAP_PRODUCT_BUILD.class,
+            productBuild = JsonUtil.getPOJOFromJson(mapper, arrayNode, ProductBuildMappingModel.class,
                                                                                 ProductBuild.class);
         }
         catch (IOException e) {
@@ -160,7 +160,7 @@ public class QAPortalDataServiceConsumerImpl implements QAPortal{
             JsonNode arrayNode = JsonUtil.getNamedNode(json, "WSO2_QAP_PRODUCTCollection")
                     .path("WSO2_QAP_PRODUCT");
 
-            product = JsonUtil.getPOJOFromJson( arrayNode, WSO2_QAP_PRODUCT.class,
+            product = JsonUtil.getPOJOFromJson( arrayNode, ProductMappingModel.class,
                     Product.class);
         }
         catch (IOException e) {
@@ -183,7 +183,7 @@ public class QAPortalDataServiceConsumerImpl implements QAPortal{
             JsonNode arrayNode = JsonUtil.getNamedNode(json, "WSO2_QAP_TEST_PLANCollection")
                     .path("WSO2_QAP_TEST_PLAN");
 
-            testPlan = JsonUtil.getPOJOFromJson( arrayNode, WSO2_QAP_TEST_PLAN.class,
+            testPlan = JsonUtil.getPOJOFromJson( arrayNode, TestPlanMappingModel.class,
                     TestPlan.class);
         }
         catch (IOException e) {
@@ -207,7 +207,7 @@ public class QAPortalDataServiceConsumerImpl implements QAPortal{
             JsonNode arrayNode = JsonUtil.getNamedNode(json, "WSO2_QAP_TEST_PLAN_TEST_SUIT_MAPPINGCollection")
                                                                         .path("WSO2_QAP_TEST_PLAN_TEST_SUIT_MAPPING");
 
-            testSuits = JsonUtil.getPOJOListFromJson(arrayNode, WSO2_QAP_TEST_SUIT.class, TestSuit.class);
+            testSuits = JsonUtil.getPOJOListFromJson(arrayNode, TestSuitMappingModel.class, TestSuit.class);
 
         }
         catch (IOException e) {
@@ -236,7 +236,7 @@ public class QAPortalDataServiceConsumerImpl implements QAPortal{
             JsonNode arrayNode = JsonUtil.getNamedNode(json, "WSO2_QAP_TEST_SCENARIOCollection")
                     .path("WSO2_QAP_TEST_SCENARIO");
 
-            testScenario = JsonUtil.getPOJOFromJson( arrayNode, WSO2_QAP_TEST_SCENARIO.class,
+            testScenario = JsonUtil.getPOJOFromJson( arrayNode, TestScenarioMappingModel.class,
                     TestScenario.class);
         }
         catch (IOException e) {
@@ -249,7 +249,26 @@ public class QAPortalDataServiceConsumerImpl implements QAPortal{
 
     @Override
     public List<TestCase> getTestCasesByTestScenarioId(int testScenarioId) {
-        return null;
+        List<TestCase> testCaseListList= new ArrayList<TestCase>();
+
+        String json ="{}";
+
+        try {
+            json = client.get(Services.TEST_SCENARIO_TEST_CASE_MAPPING_SERVICE,
+                    Resources.TEST_CASES_BY_SCENARIO + testScenarioId);
+
+            JsonNode arrayNode = JsonUtil.getNamedNode(json,"WSO2_QAP_TEST_CASECollection")
+                    .path("WSO2_QAP_TEST_CASE");
+
+            testCaseListList = JsonUtil.getPOJOListFromJson(arrayNode, TestCaseMappingModel.class, TestCase.class);
+
+        }
+        catch (IOException e) {
+
+            log.warn(e.getMessage() + "\nServer Response:" + json);
+        }
+
+        return testCaseListList;
     }
 
     @Override
@@ -266,7 +285,7 @@ public class QAPortalDataServiceConsumerImpl implements QAPortal{
             JsonNode arrayNode = JsonUtil.getNamedNode(json,"WSO2_QAP_TEST_RESULTCollection")
                                                                      .path("WSO2_QAP_TEST_RESULT");
 
-            testResultsList = JsonUtil.getPOJOListFromJson(arrayNode, WSO2_QAP_TEST_RESULT.class, TestResult.class);
+            testResultsList = JsonUtil.getPOJOListFromJson(arrayNode, TestResultMappingModel.class, TestResult.class);
 
         }
         catch (IOException e) {
@@ -279,7 +298,25 @@ public class QAPortalDataServiceConsumerImpl implements QAPortal{
 
     @Override
     public TestCase getTestCaseById(int testCaseId) {
-        return null;
+
+        TestCase testCase = null;
+        String json = "{}";
+
+        try {
+            json = client.get(Services.TEST_CASE_SERVICE, Resources.TEST_CASE_BY_ID + testCaseId);
+
+            JsonNode arrayNode = JsonUtil.getNamedNode(json, "WSO2_QAP_TEST_CASECollection")
+                    .path("WSO2_QAP_TEST_CASE");
+
+            testCase = JsonUtil.getPOJOFromJson( arrayNode, TestCaseMappingModel.class,
+                    TestCase.class);
+        }
+        catch (IOException e) {
+
+            log.warn(e.getMessage() + "\nServer Response:" + json);
+        }
+
+        return testCase;
     }
 
     private void handleExceptions(Exception ex)

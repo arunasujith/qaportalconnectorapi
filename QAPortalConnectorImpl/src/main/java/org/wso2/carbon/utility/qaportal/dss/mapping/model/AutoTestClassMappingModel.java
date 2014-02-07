@@ -5,7 +5,7 @@ import org.wso2.carbon.utility.qaportal.model.AutoTestClass;
 /**
  * Created by kavith on 2/5/14.
  */
-public class WSO2_QAP_AUTO_TEST_CLASS_ID implements MappingModel {
+public class AutoTestClassMappingModel implements MappingModel {
 
     public int WSO2_QAP_AUTO_TEST_CLASS_ID;
 

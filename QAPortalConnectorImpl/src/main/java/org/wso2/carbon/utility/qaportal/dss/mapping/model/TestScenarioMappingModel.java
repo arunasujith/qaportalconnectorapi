@@ -5,7 +5,7 @@ import org.wso2.carbon.utility.qaportal.model.TestScenario;
 /**
  * Created by kavith on 2/5/14.
  */
-public class WSO2_QAP_TEST_SCENARIO implements MappingModel {
+public class TestScenarioMappingModel implements MappingModel {
 
     public int WSO2_QAP_TEST_SCENARIO_ID;
 

@@ -5,7 +5,7 @@ import org.wso2.carbon.utility.qaportal.model.Jira;
 /**
  * Created by kavith on 2/5/14.
  */
-public class WSO2_QAP_JIRA implements MappingModel {
+public class JiraMappingModel implements MappingModel {
 
     public int WSO2_QAP_JIRA_ID;
 

@@ -21,7 +21,7 @@ public interface QAPortal {
      *
      * @param productId  QA Portal product ID
      *
-     * @return
+     * @return List  List of product version instances.
      */
     public List<ProductVersion> getProductVersionsByProductId(int productId);
 

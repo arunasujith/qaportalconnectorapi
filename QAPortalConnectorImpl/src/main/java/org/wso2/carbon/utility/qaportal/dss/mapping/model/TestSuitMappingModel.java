@@ -5,7 +5,7 @@ import org.wso2.carbon.utility.qaportal.model.TestSuit;
 /**
  * Created by kavith on 2/5/14.
  */
-public class WSO2_QAP_TEST_SUIT implements MappingModel {
+public class TestSuitMappingModel implements MappingModel {
 
     public int WSO2_QAP_TEST_SUIT_ID;
 

@@ -5,7 +5,7 @@ import org.wso2.carbon.utility.qaportal.model.Feature;
 /**
  * Created by kavith on 2/5/14.
  */
-public class WSO2_QAP_FEATURE implements MappingModel{
+public class FeatureMappingModel implements MappingModel{
 
     public int WSO2_QAP_FEATURE_ID;
 

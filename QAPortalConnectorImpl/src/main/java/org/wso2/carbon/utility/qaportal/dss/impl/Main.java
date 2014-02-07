@@ -35,6 +35,10 @@ public class Main {
         print("TestPlan details of testPlan id 7",            portal.getTestPlanById(7)                                  );
 
         print("Test Scenario details by id 4",                portal.getTestScenarioById(4)                              );
+
+        print("Test case details by id 13",                   portal.getTestCaseById(13)                                 );
+
+        print("Test cases by test scenario 2",                portal.getTestCasesByTestScenarioId(2)                    );
     }
 
 
