@@ -1,21 +1,13 @@
 package org.wso2.carbon.utility.qaportal.dss.util;
 
 import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.fasterxml.jackson.databind.type.ArrayType;
+import com.fasterxml.jackson.databind.node.MissingNode;
 import com.fasterxml.jackson.databind.type.CollectionType;
-import com.fasterxml.jackson.databind.type.TypeFactory;
 import org.wso2.carbon.utility.qaportal.dss.mapping.model.MappingModel;
-import org.wso2.carbon.utility.qaportal.dss.mapping.model.WSO2_QAP_PRODUCT;
-import org.wso2.carbon.utility.qaportal.dss.mapping.model.WSO2_QAP_TEST_SUIT;
-import org.wso2.carbon.utility.qaportal.model.TestSuit;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -28,27 +20,74 @@ import java.util.List;
  */
 public class JsonUtil {
 
-    private static ObjectMapper mapper;
+    public static DateFormat DATE_FORMAT_I;
+
+    public static DateFormat DATE_FORMAT_II;
+
+    private static ObjectMapper defaultMapper;
 
     private JsonUtil(){}
 
-    static {
-        mapper = new ObjectMapper();
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'+'HH:mm");
-        mapper.setDateFormat(df);
+    static
+    {
+        defaultMapper = new ObjectMapper();
+        DATE_FORMAT_I = new SimpleDateFormat("yyyy-MM-dd'+'HH:mm");
+        DATE_FORMAT_II = new SimpleDateFormat("dd/MM/yyyy");
+        defaultMapper.setDateFormat(DATE_FORMAT_I);
     }
 
-    public static <T,E>  E getPOJOFromJson(JsonNode node, Class<T> mappingType, Class<E> entity) throws IOException {
+    public static <T, E>  E getPOJOFromJson(JsonNode node, Class<T> mappingType, Class<E> entity) throws IOException {
 
         T pojo = null;
 
         try {
+            pojo = mappingType.newInstance();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
 
-            pojo = mapper.readValue(node.traverse(), mappingType);
+        try {
+            if (!(node instanceof MissingNode))
+            {
+                pojo = defaultMapper.readValue(node.traverse(), mappingType);
+            }
+            else
+            {
+                return null;
+            }
 
         } catch (IOException e) {
+            throw e;
+        }
 
+        return (E)((MappingModel)pojo).getEntity();
+    }
 
+    public static <T, E>  E getPOJOFromJson(ObjectMapper customMapper, JsonNode node, Class<T> mappingType, Class<E> entity) throws IOException {
+
+        T pojo = null;
+
+        try {
+            pojo = mappingType.newInstance();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            if (!(node instanceof MissingNode))
+            {
+                pojo = customMapper.readValue(node.traverse(), mappingType);
+            }
+            else
+            {
+                return null;
+            }
+
+        } catch (IOException e) {
             throw e;
         }
 
@@ -66,14 +105,42 @@ public class JsonUtil {
      *
      * @return
      */
-    public static <T,E> List<E> getPOJOListFromJson(JsonNode node, Class<T> mappingType, Class<E> entityType){
+    public static <T, E> List<E> getPOJOListFromJson(JsonNode node, Class<T> mappingType, Class<E> entityType){
+
+        List<E> list = new ArrayList<E>();
+
+        try{
+            if (node.isArray())
+            {
+                list = JsonUtil.getPOJOList(node, defaultMapper.getTypeFactory()
+                            .constructCollectionType(List.class, mappingType), mappingType, entityType);
+            }else {
+
+                list.add(JsonUtil.getPOJOFromJson(node, mappingType, entityType));
+            }
+        }
+        catch (JsonMappingException jme){
+            jme.printStackTrace();
+        }
+        catch (JsonParseException jpe){
+            jpe.printStackTrace();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
+    public static <T, E> List<E> getPOJOListFromJson(ObjectMapper customMapper, JsonNode node, Class<T> mappingType, Class<E> entityType){
 
         List<E> list = new ArrayList<E>();
 
         try{
             if(node.isArray())
             {
-                list = JsonUtil.getPOJOList(node, mapper.getTypeFactory().constructCollectionType(List.class, mappingType), mappingType, entityType);
+                list = JsonUtil.getPOJOList(node, customMapper.getTypeFactory()
+                        .constructCollectionType(List.class, mappingType), mappingType, entityType);
             }else{
 
                 list.add(JsonUtil.getPOJOFromJson(node, mappingType, entityType));
@@ -92,14 +159,14 @@ public class JsonUtil {
         return list;
     }
 
-    public static <T,E> List<E> getPOJOList(JsonNode node, CollectionType listType, Class<T> mappingType, Class<E> entity) throws IOException {
+    public static <T,E> List<E> getPOJOList(JsonNode node, CollectionType listType,
+                                                        Class<T> mappingType, Class<E> entity) throws IOException {
 
         List<T> list = new ArrayList<T>();
         List<E> entityList = new ArrayList<E>();
-        Class clz = listType.getContentType().getRawClass();
 
         try {
-            list = mapper.readValue(node.traverse(), listType) ;
+            list = defaultMapper.readValue(node.traverse(), listType) ;
 
         } catch (IOException e) {
 
@@ -120,7 +187,7 @@ public class JsonUtil {
         JsonNode element = null;
 
         try {
-            JsonNode root = mapper.readTree(jsonString);
+            JsonNode root = defaultMapper.readTree(jsonString);
 
             element =  root.path(name);
 
@@ -137,12 +204,16 @@ public class JsonUtil {
         String value = "{}";
 
         try {
-            value = mapper.writeValueAsString(obj);
+            value = defaultMapper.writeValueAsString(obj);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
 
         return value;
+    }
+
+    public static ObjectMapper getDefaultMapper() {
+        return defaultMapper;
     }
 
 }

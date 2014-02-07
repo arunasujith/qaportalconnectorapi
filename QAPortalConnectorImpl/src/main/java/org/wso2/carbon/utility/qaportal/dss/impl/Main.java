@@ -27,6 +27,14 @@ public class Main {
         print("Features by product version id 30",            portal.getProductFeaturesByVersion(30)                     );
 
         print("Test Suits by test plan id 8",                 portal.getTestSuitsByTestPlanId(8)                         );
+
+        print("Product build details of build id 20",         portal.getProductBuild(20)                                 );
+
+        print("Product details of product id 2",              portal.getProductById(2)                                   );
+
+        print("TestPlan details of testPlan id 7",            portal.getTestPlanById(7)                                  );
+
+        print("Test Scenario details by id 4",                portal.getTestScenarioById(4)                              );
     }
 
 
@@ -45,6 +53,15 @@ public class Main {
         {
             printJson(obj);
         }
+
+        System.out.println("\n============================== " + label + ": End ===============================\n\n\n");
+    }
+
+    private static void print(String label, Object obj){
+
+        System.out.println("****************************** " + label + ": Start *****************************\n");
+
+            printJson(obj);
 
         System.out.println("\n============================== " + label + ": End ===============================\n\n\n");
     }

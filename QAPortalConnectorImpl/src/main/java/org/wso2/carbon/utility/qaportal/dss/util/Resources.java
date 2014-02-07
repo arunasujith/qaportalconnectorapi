@@ -17,5 +17,13 @@ public class Resources {
 
     public static final String TEST_SUITS_BY_TEST_PLAN = "get/testsuits_by_testplanid/";
 
+    public static final String PRODUCT_BUILD_BY_ID = "get/build_by_id_plain/";
+
+    public static final String PRODUCT_BY_ID = "get/product_by_id/" ;
+
+    public static final String TEST_PLAN_BY_ID = "view/test_plan_by_id/";
+
+    public static final String TEST_SCENARIO_BY_ID = "view/testscenario_with_id/";
+
     private Resources(){}
 }
