@@ -20,7 +20,7 @@
         }
     },
     "userSpace": {
-        "space": "QA-Reports",
+        "space": "QA-Dashboard",
         "options": {
             "type": "registry",
             "serverUrl": "https://localhost:9443/admin",
@@ -41,12 +41,12 @@
     },
     "ssoConfiguration": {
         "enabled": true,
-        "issuer": "QA-Reports",
+        "issuer": "QA-Dashboard",
         "identityProviderURL": "https://localhost:9443/sso/samlsso.jag",
         "keyStorePassword": "wso2carbon",
         "identityAlias": "wso2carbon",
         "responseSigningEnabled": "true",
         "keyStoreName": "/repository/resources/security/wso2carbon.jks",
-        "appAcs" : "https://localhost:9443/QA-Reports/sso.jag",
+        "appAcs" : "https://localhost:9443/QA-Dashboard/sso.jag",
     }
 }

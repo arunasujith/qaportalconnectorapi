@@ -1,6 +1,6 @@
 <%
 if(session.get("LOGGED_IN_USER") === null) {
-response.sendRedirect('/QA-Reports');
+response.sendRedirect('/QA-Dashboard');
 } else {
     var configs = require('/config.json');
 

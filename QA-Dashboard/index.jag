@@ -1,7 +1,7 @@
 <%
 var user = require('/modules/user.js').current();
 if (!user) {
-    response.sendRedirect('/QA-Reports/login');
+    response.sendRedirect('/QA-Dashboard/login');
 }
 %>
 <!DOCTYPE html>
@@ -76,7 +76,7 @@ if (!user) {
 							<li>
 
 								
-								<a href="/QA-Reports/logout.jag"><i class="icon-signout"></i> Sign out</a>
+								<a href="/QA-Dashboard/logout.jag"><i class="icon-signout"></i> Sign out</a>
 								
 
 							</li>
@@ -100,7 +100,7 @@ if (!user) {
 			<div class="row-fluid">
 
 				<div class="span5">
-					<input id="inp-designer-title" type="text" value="QA-Reports">
+					<input id="inp-designer-title" type="text" value="QA-Dashboard">
 				</div>
 				<div class="span7">
 					<div class="nav-collapse collapse">
@@ -191,7 +191,7 @@ if (!user) {
 
         <div class="span12">
 <input type="hidden" value="design" id="inp-view-mode" />
-<input type="hidden" value="QA-Reports" id="inp-dashboard" />
+<input type="hidden" value="QA-Dashboard" id="inp-dashboard" />
 <iframe style="display: none;height: 0;width: 0;" src="http://localhost:9763/store/hidden-logger.jag?user=<%=session.get('LOGGED_IN_USER')%>"></iframe>
 
 <div id="gridster-cont" class="container-fluid">
@@ -298,7 +298,7 @@ if (!user) {
          		
             </li>
             
-            <li class="layout_block " data-sizey="2" data-sizex="6" data-col="1" data-row="2"
+            <li class="layout_block " data-sizey="2" data-sizex="2" data-col="1" data-row="2"
                 data-url="" data-wid="5" data-prefs="{}" data-title="">
                 <div class="grid_header">
            			<h3></h3>
@@ -327,7 +327,7 @@ if (!user) {
          		
             </li>
             
-            <li class="layout_block " data-sizey="2" data-sizex="6" data-col="1" data-row="4"
+            <li class="layout_block " data-sizey="2" data-sizex="2" data-col="3" data-row="2"
                 data-url="" data-wid="6" data-prefs="{}" data-title="">
                 <div class="grid_header">
            			<h3></h3>
@@ -356,8 +356,95 @@ if (!user) {
          		
             </li>
             
-            <li class="layout_block " data-sizey="2" data-sizex="6" data-col="1" data-row="6"
+            <li class="layout_block " data-sizey="2" data-sizex="2" data-col="5" data-row="2"
                 data-url="" data-wid="7" data-prefs="{}" data-title="">
+                <div class="grid_header">
+           			<h3></h3>
+            		<span class="grid_header_controls">
+                		<a class="show-widget-pref" data-collapse="true"><i class="icon-cog"></i></a>
+                		<a class="expand-widget"><i class="icon-resize-full"></i></a>
+                		<a class="shrink-widget"><i class="icon-resize-small"></i></a>
+                		<a class="close-widget" href="#"><i class="icon-remove"></i></a>
+            		</span>
+        		</div>
+        		<div class="gadget-pref-cont">
+        	
+        		</div>
+                
+
+                <div class="add-gadget-item">
+
+                </div>
+                
+                
+                 <div class="designer-placeholder">
+
+        		</div>
+
+       			<button class="btn btn-add-gadget">Add Gadget</button>
+         		
+            </li>
+            
+            <li class="layout_block " data-sizey="2" data-sizex="2" data-col="1" data-row="4"
+                data-url="" data-wid="8" data-prefs="{}" data-title="">
+                <div class="grid_header">
+           			<h3></h3>
+            		<span class="grid_header_controls">
+                		<a class="show-widget-pref" data-collapse="true"><i class="icon-cog"></i></a>
+                		<a class="expand-widget"><i class="icon-resize-full"></i></a>
+                		<a class="shrink-widget"><i class="icon-resize-small"></i></a>
+                		<a class="close-widget" href="#"><i class="icon-remove"></i></a>
+            		</span>
+        		</div>
+        		<div class="gadget-pref-cont">
+        	
+        		</div>
+                
+
+                <div class="add-gadget-item">
+
+                </div>
+                
+                
+                 <div class="designer-placeholder">
+
+        		</div>
+
+       			<button class="btn btn-add-gadget">Add Gadget</button>
+         		
+            </li>
+            
+            <li class="layout_block " data-sizey="2" data-sizex="2" data-col="3" data-row="4"
+                data-url="" data-wid="9" data-prefs="{}" data-title="">
+                <div class="grid_header">
+           			<h3></h3>
+            		<span class="grid_header_controls">
+                		<a class="show-widget-pref" data-collapse="true"><i class="icon-cog"></i></a>
+                		<a class="expand-widget"><i class="icon-resize-full"></i></a>
+                		<a class="shrink-widget"><i class="icon-resize-small"></i></a>
+                		<a class="close-widget" href="#"><i class="icon-remove"></i></a>
+            		</span>
+        		</div>
+        		<div class="gadget-pref-cont">
+        	
+        		</div>
+                
+
+                <div class="add-gadget-item">
+
+                </div>
+                
+                
+                 <div class="designer-placeholder">
+
+        		</div>
+
+       			<button class="btn btn-add-gadget">Add Gadget</button>
+         		
+            </li>
+            
+            <li class="layout_block " data-sizey="2" data-sizex="2" data-col="5" data-row="4"
+                data-url="" data-wid="10" data-prefs="{}" data-title="">
                 <div class="grid_header">
            			<h3></h3>
             		<span class="grid_header_controls">

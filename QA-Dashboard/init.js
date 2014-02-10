@@ -9,7 +9,7 @@ var sso = function (options) {
     });
 };
 
-sso({'issuer': 'QA-Reports',
+sso({'issuer': 'QA-Dashboard',
     'consumerUrl': config.ssoConfiguration.appAcs,
     'doSign': 'true',
     'singleLogout': 'true',
