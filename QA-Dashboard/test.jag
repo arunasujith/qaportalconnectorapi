@@ -1,0 +1,14 @@
+<%
+
+var carbon = require('carbon');
+var qaPortal = carbon.server.osgiService('org.wso2.carbon.utility.qaportal.QAPortal');
+var products = qaPortal.getAllProducts();
+importClass(Packages.org.wso2.carbon.utility.qaportal.dss.util.JsonUtil);
+
+var arr = parse(String(JsonUtil.getJsonFromPojo(products)));
+arr.forEach(function(element){
+	print(element.productId+" : "+element.productName+"<br>");
+})
+//print(String(JsonUtil.getJsonFromPojo(products)));
+
+%>

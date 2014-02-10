@@ -47,10 +47,12 @@
                     <instructions>
                         <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${pom.artifactId}</Bundle-Name>
-                        <Export-Package>org.wso2.carbon.utility.qaportal.dss.impl</Export-Package>
-                        <Private-Package>
-                            org.wso2.carbon.utility.qaportal.dss.mapping.model,
+                        <Export-Package>
+                            org.wso2.carbon.utility.qaportal.dss.impl,
                             org.wso2.carbon.utility.qaportal.dss.util
+                        </Export-Package>
+                        <Private-Package>
+                            org.wso2.carbon.utility.qaportal.dss.mapping.model
                         </Private-Package>
                         <Service-Component>OSGI-INF/component.xml</Service-Component>
                     </instructions>

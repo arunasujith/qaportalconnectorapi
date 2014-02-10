@@ -4,10 +4,6 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.http.HttpResponse;
-import org.apache.http.ProtocolVersion;
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.UsernamePasswordCredentials;
-import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.protocol.HttpClientContext;
@@ -15,23 +11,17 @@ import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.conn.ssl.SSLContexts;
 import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
 import org.apache.http.impl.DefaultHttpResponseFactory;
-import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 import javax.net.ssl.SSLHandshakeException;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.security.KeyManagementException;
 import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.cert.CertificateException;
 
 import javax.net.ssl.SSLContext;
 
@@ -86,14 +76,14 @@ public class HttpClientWrapper {
         HttpResponse response = (new DefaultHttpResponseFactory()).newHttpResponse(request.getProtocolVersion(),
                                                                                     404, new HttpClientContext());
 
-        try
-        {
-            response = createClient().execute(request);
-
-            log.debug("QAPortalDSSClient : HttpClientWrapper - Successfully executed the request to " + url + ".");
-        }
-        catch (SSLHandshakeException ex)
-        {
+//        try
+//        {
+//            response = createClient().execute(request);
+//
+//            log.debug("QAPortalDSSClient : HttpClientWrapper - Successfully executed the request to " + url + ".");
+//        }
+//        catch (SSLHandshakeException ex)
+//        {
             log.debug("QAPortalDSSClient : HttpClientWrapper - Error executing the request." +
                     "\t Retrying to execute with a custom ssl context.");
 
@@ -107,7 +97,7 @@ public class HttpClientWrapper {
             {
                 e.printStackTrace();
             }
-        }
+        //}
 
         jsonResponse = EntityUtils.toString(response.getEntity());
 
@@ -123,7 +113,7 @@ public class HttpClientWrapper {
     private HttpClient createClientWithCustomSSLContext() throws Exception {
 
         KeyStore trustStore  = KeyStore.getInstance(KeyStore.getDefaultType());
-        File keyStore = new File("my.keystore");
+        File keyStore = new File("../my.keystore");
         keyStore.createNewFile();
 
         FileInputStream inputStream = new FileInputStream(keyStore);
@@ -133,7 +123,7 @@ public class HttpClientWrapper {
         }
         catch (Exception e)
         {
-
+            //e.printStackTrace();
         }
         finally
         {
