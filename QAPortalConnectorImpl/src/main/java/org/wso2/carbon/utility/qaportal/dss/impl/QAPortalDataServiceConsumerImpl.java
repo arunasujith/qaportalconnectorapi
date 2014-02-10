@@ -29,6 +29,10 @@ public class QAPortalDataServiceConsumerImpl implements QAPortal{
 
     private HttpClientWrapper client;
 
+    public QAPortalDataServiceConsumerImpl() {
+        client= new HttpClientWrapper("https", "192.168.3.24", 9443, "admin", "admin");
+    }
+
     public QAPortalDataServiceConsumerImpl(String transport, String host, int port, String username, String password){
 
         client= new HttpClientWrapper(transport, host, port, username, password);

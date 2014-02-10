@@ -7,6 +7,7 @@
     <groupId>org.wso2.carbon.utility</groupId>
     <artifactId>QAPortalConnectorImpl</artifactId>
     <version>1.0.0</version>
+    <packaging>bundle</packaging>
 
     <dependencies>
         <dependency>
@@ -46,8 +47,12 @@
                     <instructions>
                         <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${pom.artifactId}</Bundle-Name>
-                        <Export-Package>org.wso2.carbon.utility.qaportal.dss.*</Export-Package>
-                        <Private-Package></Private-Package>
+                        <Export-Package>org.wso2.carbon.utility.qaportal.dss.impl</Export-Package>
+                        <Private-Package>
+                            org.wso2.carbon.utility.qaportal.dss.mapping.model,
+                            org.wso2.carbon.utility.qaportal.dss.util
+                        </Private-Package>
+                        <Service-Component>OSGI-INF/component.xml</Service-Component>
                     </instructions>
                 </configuration>
             </plugin>

@@ -73,7 +73,7 @@ public class HttpClientWrapper {
      */
     public String get(String service, String resource) throws IOException
     {
-        String jsonResponse = "";
+        String jsonResponse = "{}";
 
         String url = transport + "://" + host + ":" + port + "/services/" + service + "/" + resource;
 

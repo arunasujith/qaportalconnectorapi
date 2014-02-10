@@ -7,7 +7,7 @@
     <groupId>org.wso2.carbon.utility</groupId>
     <artifactId>QAPortalConnector</artifactId>
     <version>1.0.0</version>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
 
     <build>
         <plugins>
@@ -19,7 +19,10 @@
                     <instructions>
                         <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${pom.artifactId}</Bundle-Name>
-                        <Export-Package>org.wso2.carbon.utility.qaportal.*</Export-Package>
+                        <Export-Package>
+                            org.wso2.carbon.utility.qaportal,
+                            org.wso2.carbon.utility.qaportal.model
+                        </Export-Package>
                     </instructions>
                 </configuration>
             </plugin>
