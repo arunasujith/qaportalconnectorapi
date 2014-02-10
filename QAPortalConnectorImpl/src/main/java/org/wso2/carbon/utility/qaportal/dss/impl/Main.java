@@ -28,7 +28,7 @@ public class Main {
 
         print("Test Suits by test plan id 8",                 portal.getTestSuitsByTestPlanId(8)                         );
 
-        print("Product build details of build id 20",         portal.getProductBuild(20)                                 );
+        print("Product build details of build id 20",         portal.getProductBuild(21)                                 );
 
         print("Product details of product id 2",              portal.getProductById(2)                                   );
 

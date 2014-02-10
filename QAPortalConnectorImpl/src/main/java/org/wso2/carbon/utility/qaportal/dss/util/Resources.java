@@ -17,7 +17,7 @@ public class Resources {
 
     public static final String TEST_SUITS_BY_TEST_PLAN = "get/testsuits_by_testplanid/";
 
-    public static final String PRODUCT_BUILD_BY_ID = "get/build_by_id_plain/";
+    public static final String PRODUCT_BUILD_BY_ID = "get/build_by_id/";
 
     public static final String PRODUCT_BY_ID = "get/product_by_id/" ;
 
@@ -27,7 +27,7 @@ public class Resources {
 
     public static final String TEST_CASE_BY_ID = "view/testcase_by_id/";
 
-    public static final String TEST_CASES_BY_SCENARIO = "view/testscases_by_Scenario_Id/";
+    public static final String TEST_CASES_BY_SCENARIO = "view/testcases_for_testscenario/";
 
     private Resources(){}
 }

@@ -257,8 +257,8 @@ public class QAPortalDataServiceConsumerImpl implements QAPortal{
             json = client.get(Services.TEST_SCENARIO_TEST_CASE_MAPPING_SERVICE,
                     Resources.TEST_CASES_BY_SCENARIO + testScenarioId);
 
-            JsonNode arrayNode = JsonUtil.getNamedNode(json,"WSO2_QAP_TEST_CASECollection")
-                    .path("WSO2_QAP_TEST_CASE");
+            JsonNode arrayNode = JsonUtil.getNamedNode(json,"WSO2_QAP_TEST_SCENARIO_TEST_CASE_MAPPINGCollection")
+                    .path("WSO2_QAP_TEST_SCENARIO_TEST_CASE_MAPPING");
 
             testCaseListList = JsonUtil.getPOJOListFromJson(arrayNode, TestCaseMappingModel.class, TestCase.class);
 
