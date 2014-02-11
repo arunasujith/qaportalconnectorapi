@@ -1,0 +1,34 @@
+<%
+importClass(Packages.org.wso2.carbon.utility.qaportal.dss.util.JsonUtil);
+importClass(Packages.org.wso2.carbon.utility.qaportal.QAPortalStats);
+
+var carbon = require('carbon');
+var qaPortal = carbon.server.osgiService('org.wso2.carbon.utility.qaportal.QAPortal');
+
+
+var buildId = request.getParameter("buildId");
+
+
+var testResults = qaPortal.getTestResultsByBuildId(buildId);
+
+var testStatus = QAPortalStats.getTestStatus(testResults);
+
+
+var status = JSON.parse(String(JsonUtil.getJsonFromPojo(testStatus)));
+
+function getData() {
+
+    var data = [];
+    var obj = {};
+
+    obj["series0"] = {"label":"In Progress","data":status["IN PROGRESS"]};
+    obj["series1"] = {"label":"Passed","data":status["PASSED"]};
+    obj["series2"] = {"label":"Failed","data":status["FAILED"]};
+
+    data.push(obj);
+    return data;
+
+}
+print(getData());
+
+%>
