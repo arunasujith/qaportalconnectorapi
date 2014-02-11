@@ -1,0 +1,5 @@
+<%
+    var result = [{"series1" : {"label" : "sin(x sin(x))", "data" : [[1,25 ], [2, 55]] }},{"series2" : {"label" : "sin(x sin(x))", "data" : [[2,44 ], [42, 34]] }}];
+
+    print(result);
+%>

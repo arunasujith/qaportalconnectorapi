@@ -1,6 +1,7 @@
 package org.wso2.carbon.utility.qaportal;
 
 import org.wso2.carbon.utility.qaportal.model.TestResult;
+import org.wso2.carbon.utility.qaportal.model.TestScenario;
 
 import java.util.HashMap;
 import java.util.List;
@@ -39,6 +40,20 @@ public class QAPortalStats {
         map.put(TEST_STATUS_IN_PROGRESS, (inPogressCount/total)*100);
         map.put(TEST_STATUS_PASSED, (passedCount/total)*100);
         map.put(TEST_STATUS_FAILED, (failedCount/total)*100);
+
+        return map;
+
+    }
+
+    public static Map<String, Integer[]> getTestStatusByOwners(QAPortal portal, List<TestResult> results){
+
+        Map<String, Integer[]> map = new HashMap<String, Integer[]>();
+
+        for(TestResult tR : results)
+        {
+//            TestScenario scenario = portal.getTestCaseById(tR.getTestCaseId());
+
+        }
 
         return map;
 
