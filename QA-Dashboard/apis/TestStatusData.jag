@@ -5,14 +5,11 @@ importClass(Packages.org.wso2.carbon.utility.qaportal.QAPortalStats);
 var carbon = require('carbon');
 var qaPortal = carbon.server.osgiService('org.wso2.carbon.utility.qaportal.QAPortal');
 
-
+<iframe src="http://localhost:9763/gadgets/ifr?url=http://localhost:9763/portal/gadgets/wso2-carbon-commits/wso2-carbon-commits.xml"></iframe>
 var buildId = request.getParameter("buildId");
 
-
 var testResults = qaPortal.getTestResultsByBuildId(buildId);
-
 var testStatus = QAPortalStats.getTestStatus(testResults);
-
 
 var status = JSON.parse(String(JsonUtil.getJsonFromPojo(testStatus)));
 
@@ -29,6 +26,6 @@ function getData() {
     return data;
 
 }
-print(getData());
 
+print(getData());
 %>

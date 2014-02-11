@@ -299,7 +299,7 @@ if (!user) {
             </li>
             
             <li class="layout_block " data-sizey="2" data-sizex="2" data-col="1" data-row="2"
-                data-url="" data-wid="5" data-prefs="{}" data-title="">
+                data-url="http://localhost:9763/portal/gadgets/test-status/test-status.xml" data-wid="5" data-prefs="{}" data-title="Test Status">
                 <div class="grid_header">
            			<h3></h3>
             		<span class="grid_header_controls">
@@ -319,12 +319,6 @@ if (!user) {
                 </div>
                 
                 
-                 <div class="designer-placeholder">
-
-        		</div>
-
-       			<button class="btn btn-add-gadget">Add Gadget</button>
-         		
             </li>
             
             <li class="layout_block " data-sizey="2" data-sizex="2" data-col="3" data-row="2"
