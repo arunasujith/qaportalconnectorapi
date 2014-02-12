@@ -16,9 +16,14 @@ function getData() {
     var data = [];
     var obj = {};
 
-    obj["series0"] = {"label":"In Progress","data":status["IN PROGRESS"]};
-    obj["series1"] = {"label":"Passed","data":status["PASSED"]};
-    obj["series2"] = {"label":"Failed","data":status["FAILED"]};
+//    obj["series0"] = {"label":"In Progress","data":status["IN PROGRESS"]};
+//    obj["series1"] = {"label":"Passed","data":status["PASSED"]};
+//    obj["series2"] = {"label":"Failed","data":status["FAILED"]};
+
+     obj["series0"] = {"label":"In Progress","data":23};
+     obj["series1"] = {"label":"Passed","data":35};
+     obj["series2"] = {"label":"Failed","data":5};
+     obj["series3"] = {"label":"Not Executed","data":37};
 
     data.push(obj);
     return data;

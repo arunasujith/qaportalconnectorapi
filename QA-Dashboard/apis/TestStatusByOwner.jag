@@ -1,5 +1,16 @@
 <%
-    var result = [{"series1" : {"label" : "sin(x sin(x))", "data" : [[1,25 ], [2, 55]] }},{"series2" : {"label" : "sin(x sin(x))", "data" : [[2,44 ], [42, 34]] }}];
+    var result =[[{
+                    "label":"Passed", "data": [["Kavith", 5],["Sajith", 20],["Aruna", 3]]},
+                {
+                    "label":"Failed", "data": [["Kavith", 10],["Sajith", 10],["Aruna", 13]]},
+                {
+                    "label":"In Progress", "data": [["Kavith", 15],["Sajith", 2],["Aruna", 33]]},
+
+                 {
+                    "label":"Not Executed", "data": [["Kavith", 4],["Sajith", 2],["Aruna", 4]]}
+                 ]];
+
 
     print(result);
 %>
+
