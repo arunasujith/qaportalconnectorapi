@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <Module>
-    <ModulePrefs title="Test Status / Test Owner"
+    <ModulePrefs title="Test Status / Test Priority"
                  author="WSO2 QA Portal"
                  height="230"
                  scrolling="true"
                  tags="charts,bar,visualization,data"
-                 description=" Displays test status by test owner">
+                 description=" Displays test status by test priority">
      </ModulePrefs>
     <UserPref name="dataSource"
               display_name="Data Source"
-              default_value="../../QA-Dashboard/apis/TestStatusByOwner.jag">
+              default_value="../../QA-Dashboard/apis/TestStatusByPriority.jag">
     </UserPref>
     <UserPref name="updateGraph"
               display_name="Update Interval (s)"
@@ -28,7 +28,7 @@
 		<script src="js/exporting.js"></script>
 		<script type="text/javascript">		
 			function fetchData() {
-				var url = "../../QA-Dashboard/apis/TestStatusByOwner.jag";
+				var url = "../../QA-Dashboard/apis/TestStatusByPriority.jag";
 
 				$.ajax({
 				    url: url,

@@ -6,10 +6,10 @@ var carbon = require('carbon');
 var qaPortal = carbon.server.osgiService('org.wso2.carbon.utility.qaportal.QAPortal');
 var buildId = request.getParameter("buildId");
 
-var testResults = qaPortal.getTestResultsByBuildId(buildId);
-var testStatus = QAPortalStats.getTestStatus(testResults);
-
-var status = JSON.parse(String(JsonUtil.getJsonFromPojo(testStatus)));
+//var testResults = qaPortal.getTestResultsByBuildId(buildId);
+//var testStatus = QAPortalStats.getTestStatus(testResults);
+//
+//var status = JSON.parse(String(JsonUtil.getJsonFromPojo(testStatus)));
 
 function getData() {
 
