@@ -1,7 +1,7 @@
 <%
     function getNames(){
 
-        var data =  ['Kavith', 'Pubudu', 'Jayanaga','Sajith', 'Aruna', 'Uvindra'];
+        var data =  ['Kavith', 'Pubudu', 'Jayanga','Sajith', 'Aruna', 'Uvindra'];
 
         return data;
     }

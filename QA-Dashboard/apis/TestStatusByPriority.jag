@@ -30,7 +30,7 @@
                               yAxis: {
                                   min: 0,
                                   title: {
-                                      text: 'Test Status'
+                                      text: 'No of Test Cases'
                                   }
                               },
                               legend: {

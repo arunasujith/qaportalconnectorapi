@@ -18,11 +18,13 @@ public class QAPortalStats {
 
     public static String TEST_STATUS_FAILED = "FAILED";
 
+    public static String TEST_STATUS_NOT_EXECUTED = "NOT EXECUTED";
+
     public static Map<String,Double> getTestStatus(List<TestResult> results){
 
         double total = results.size();
 
-        int inPogressCount = 0, passedCount = 0, failedCount = 0;
+        int inPogressCount = 0, passedCount = 0, failedCount = 0, notExecutedCount = 0;
 
         Map<String,Double> map = new HashMap<String, Double>();
 
@@ -34,12 +36,16 @@ public class QAPortalStats {
                 passedCount++;
             } else if(tR.getTestStatus().equals(TEST_STATUS_FAILED)){
                 failedCount++;
+            } else if(tR.getTestStatus().equals(TEST_STATUS_NOT_EXECUTED)){
+                notExecutedCount++;
             }
+
         }
 
         map.put(TEST_STATUS_IN_PROGRESS, (inPogressCount/total)*100);
         map.put(TEST_STATUS_PASSED, (passedCount/total)*100);
         map.put(TEST_STATUS_FAILED, (failedCount/total)*100);
+        map.put(TEST_STATUS_NOT_EXECUTED, (notExecutedCount/total)*100);
 
         return map;
 
