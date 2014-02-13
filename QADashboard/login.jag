@@ -5,7 +5,7 @@ var security = require("sso"),
         process = require("process"),
         ssoConfiguration = {
             "enabled": true,
-            "issuer": "QA-Dashboard",
+            "issuer": "QADashboard",
             "identityProviderURL": config.ssoConfiguration.identityProviderURL,
             "keyStorePassword": "wso2carbon",
             "identityAlias": "wso2carbon",
@@ -19,7 +19,7 @@ var security = require("sso"),
         requestedPage = request.getParameter("requestedPage"),
         log = new Log();
 
-print('<h2>Log in to QA-Dashboard</h2>');
+print('<h2>Log in to QADashboard</h2>');
 
 var partWithContext = request.getRequestURL().split(
         request.getRequestURI()

@@ -1,7 +1,7 @@
 <%
 var user = require('/modules/user.js').current();
 if (!user) {
-    response.sendRedirect('/QA-Dashboard/login');
+    response.sendRedirect('/QADashboard/login');
 }
 %>
 <!DOCTYPE html>
@@ -76,7 +76,7 @@ if (!user) {
 							<li>
 
 								
-								<a href="/QA-Dashboard/logout.jag"><i class="icon-signout"></i> Sign out</a>
+								<a href="/QADashboard/logout.jag"><i class="icon-signout"></i> Sign out</a>
 								
 
 							</li>
@@ -100,7 +100,7 @@ if (!user) {
 			<div class="row-fluid">
 
 				<div class="span5">
-					<input id="inp-designer-title" type="text" value="QA-Dashboard">
+					<input id="inp-designer-title" type="text" value="QADashboard">
 				</div>
 				<div class="span7">
 					<div class="nav-collapse collapse">
@@ -191,7 +191,7 @@ if (!user) {
 
         <div class="span12">
 <input type="hidden" value="design" id="inp-view-mode" />
-<input type="hidden" value="QA-Dashboard" id="inp-dashboard" />
+<input type="hidden" value="QADashboard" id="inp-dashboard" />
 <iframe style="display: none;height: 0;width: 0;" src="http://localhost:9763/store/hidden-logger.jag?user=<%=session.get('LOGGED_IN_USER')%>"></iframe>
 
 <div id="gridster-cont" class="container-fluid">
@@ -203,7 +203,7 @@ if (!user) {
             
 			
             <li class="layout_block static" data-sizey="1" data-sizex="2" data-col="1" data-row="1"
-                data-url="" data-wid="1" data-prefs="{}" data-title="">
+                data-url="" data-wid="73" data-prefs="{}" data-title="">
                 <div class="grid_header">
            			<h3></h3>
             		<span class="grid_header_controls">
@@ -227,7 +227,7 @@ if (!user) {
             </li>
             
             <li class="layout_block static" data-sizey="1" data-sizex="2" data-col="3" data-row="1"
-                data-url="" data-wid="2" data-prefs="{}" data-title="">
+                data-url="" data-wid="74" data-prefs="{}" data-title="">
                 <div class="grid_header">
            			<h3></h3>
             		<span class="grid_header_controls">
@@ -251,7 +251,7 @@ if (!user) {
             </li>
             
             <li class="layout_block static" data-sizey="1" data-sizex="1" data-col="5" data-row="1"
-                data-url="" data-wid="3" data-prefs="{}" data-title="">
+                data-url="" data-wid="75" data-prefs="{}" data-title="">
                 <div class="grid_header">
            			<h3></h3>
             		<span class="grid_header_controls">
@@ -275,7 +275,7 @@ if (!user) {
             </li>
             
             <li class="layout_block static" data-sizey="1" data-sizex="1" data-col="6" data-row="1"
-                data-url="" data-wid="4" data-prefs="{}" data-title="">
+                data-url="" data-wid="76" data-prefs="{}" data-title="">
                 <div class="grid_header">
            			<h3></h3>
             		<span class="grid_header_controls">
@@ -299,7 +299,7 @@ if (!user) {
             </li>
             
             <li class="layout_block " data-sizey="2" data-sizex="2" data-col="1" data-row="2"
-                data-url="http://localhost:9763/portal/gadgets/test-status/test-status.xml" data-wid="5" data-prefs="{}" data-title="Test Status">
+                data-url="http://localhost:9763/portal/gadgets/test-status/test-status.xml" data-wid="77" data-prefs="{}" data-title="Test Status">
                 <div class="grid_header">
            			<h3></h3>
             		<span class="grid_header_controls">
@@ -322,7 +322,7 @@ if (!user) {
             </li>
             
             <li class="layout_block " data-sizey="2" data-sizex="2" data-col="3" data-row="2"
-                data-url="" data-wid="6" data-prefs="{}" data-title="">
+                data-url="http://localhost:9763/portal/gadgets/test-status-by-priority/test-status-by-priority.xml" data-wid="78" data-prefs="{}" data-title="Test Status / Test Priority">
                 <div class="grid_header">
            			<h3></h3>
             		<span class="grid_header_controls">
@@ -342,16 +342,10 @@ if (!user) {
                 </div>
                 
                 
-                 <div class="designer-placeholder">
-
-        		</div>
-
-       			<button class="btn btn-add-gadget">Add Gadget</button>
-         		
             </li>
             
             <li class="layout_block " data-sizey="2" data-sizex="2" data-col="5" data-row="2"
-                data-url="" data-wid="7" data-prefs="{}" data-title="">
+                data-url="http://localhost:9763/portal/gadgets/automation-test-status/automation-test-status.xml" data-wid="79" data-prefs="{}" data-title="Automation Test Status">
                 <div class="grid_header">
            			<h3></h3>
             		<span class="grid_header_controls">
@@ -371,74 +365,10 @@ if (!user) {
                 </div>
                 
                 
-                 <div class="designer-placeholder">
-
-        		</div>
-
-       			<button class="btn btn-add-gadget">Add Gadget</button>
-         		
-            </li>
-            
-            <li class="layout_block " data-sizey="2" data-sizex="2" data-col="1" data-row="4"
-                data-url="" data-wid="8" data-prefs="{}" data-title="">
-                <div class="grid_header">
-           			<h3></h3>
-            		<span class="grid_header_controls">
-                		<a class="show-widget-pref" data-collapse="true"><i class="icon-cog"></i></a>
-                		<a class="expand-widget"><i class="icon-resize-full"></i></a>
-                		<a class="shrink-widget"><i class="icon-resize-small"></i></a>
-                		<a class="close-widget" href="#"><i class="icon-remove"></i></a>
-            		</span>
-        		</div>
-        		<div class="gadget-pref-cont">
-        	
-        		</div>
-                
-
-                <div class="add-gadget-item">
-
-                </div>
-                
-                
-                 <div class="designer-placeholder">
-
-        		</div>
-
-       			<button class="btn btn-add-gadget">Add Gadget</button>
-         		
-            </li>
-            
-            <li class="layout_block " data-sizey="2" data-sizex="2" data-col="3" data-row="4"
-                data-url="" data-wid="9" data-prefs="{}" data-title="">
-                <div class="grid_header">
-           			<h3></h3>
-            		<span class="grid_header_controls">
-                		<a class="show-widget-pref" data-collapse="true"><i class="icon-cog"></i></a>
-                		<a class="expand-widget"><i class="icon-resize-full"></i></a>
-                		<a class="shrink-widget"><i class="icon-resize-small"></i></a>
-                		<a class="close-widget" href="#"><i class="icon-remove"></i></a>
-            		</span>
-        		</div>
-        		<div class="gadget-pref-cont">
-        	
-        		</div>
-                
-
-                <div class="add-gadget-item">
-
-                </div>
-                
-                
-                 <div class="designer-placeholder">
-
-        		</div>
-
-       			<button class="btn btn-add-gadget">Add Gadget</button>
-         		
             </li>
             
             <li class="layout_block " data-sizey="2" data-sizex="2" data-col="5" data-row="4"
-                data-url="" data-wid="10" data-prefs="{}" data-title="">
+                data-url="http://localhost:9763/portal/gadgets/automation-test-coverage/automation-test-coverage.xml" data-wid="80" data-prefs="{}" data-title="Automation Test Coverage">
                 <div class="grid_header">
            			<h3></h3>
             		<span class="grid_header_controls">
@@ -458,12 +388,29 @@ if (!user) {
                 </div>
                 
                 
-                 <div class="designer-placeholder">
-
+            </li>
+            
+            <li class="layout_block " data-sizey="2" data-sizex="4" data-col="1" data-row="4"
+                data-url="http://localhost:9763/portal/gadgets/test-status-by-owner/test-status-by-owner.xml" data-wid="81" data-prefs="{}" data-title="Test Status / Test Owner">
+                <div class="grid_header">
+           			<h3></h3>
+            		<span class="grid_header_controls">
+                		<a class="show-widget-pref" data-collapse="true"><i class="icon-cog"></i></a>
+                		<a class="expand-widget"><i class="icon-resize-full"></i></a>
+                		<a class="shrink-widget"><i class="icon-resize-small"></i></a>
+                		<a class="close-widget" href="#"><i class="icon-remove"></i></a>
+            		</span>
         		</div>
+        		<div class="gadget-pref-cont">
+        	
+        		</div>
+                
 
-       			<button class="btn btn-add-gadget">Add Gadget</button>
-         		
+                <div class="add-gadget-item">
+
+                </div>
+                
+                
             </li>
             
 

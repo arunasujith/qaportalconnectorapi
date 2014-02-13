@@ -9,7 +9,7 @@
      </ModulePrefs>
     <UserPref name="dataSource"
               display_name="Data Source"
-              default_value="../../QA-Dashboard/apis/TestStatusData.jag?buildId=20">
+              default_value="../../QADashboard/apis/TestStatusData.jag?buildId=20">
     </UserPref>
     <UserPref name="updateGraph"
               display_name="Update Interval (s)"
@@ -27,7 +27,7 @@
 		<script src="js/exporting.js"></script>
 		<script type="text/javascript">		
 			function fetchData() {
-				var url = "../../QA-Dashboard/apis/TestStatusData.jag?buildId=20";
+				var url = "../../QADashboard/apis/TestStatusData.jag?buildId=20";
 
 				$.ajax({
 				    url: url,

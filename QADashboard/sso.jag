@@ -5,7 +5,7 @@ var log = new Log();
  var isLogin = session.get("Loged");
 
  if (isLogin) {
- response.sendRedirect('/QA-Dashboard');
+ response.sendRedirect('/QADashboard');
  }
  */
 
@@ -51,15 +51,15 @@ if (samlResponse != null) {
         var user = require('/modules/user.js');
 
         if (user.loginWithSAML(username)) {
-            response.sendRedirect('/QA-Dashboard');
+            response.sendRedirect('/QADashboard');
         }
 
     } else {
-        log.debug('logout from QA-Dashboard');
+        log.debug('logout from QADashboard');
 // if the saml response is log out request from IDP, we log out from web app.
         ssoRelyingParty.invalidateSessionBySessionId(sessionId);
         session.invalidate();
-        response.sendRedirect('/QA-Dashboard');
+        response.sendRedirect('/QADashboard');
 
     }
 
