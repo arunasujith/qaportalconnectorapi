@@ -1,0 +1,32 @@
+<%
+    //http://localhost:9763/portal/gadgets/git-project-summary/git-project-summary.xml
+
+    function getData(){
+ 	var data  = [
+			{
+                        	key: 'Commits',
+                        	value: 'value'
+                    	},
+			{
+                        	key: 'Commits',
+                        	value: 'value'
+                    	},
+			{
+                        	key: 'Commits',
+                        	value: 'value'
+                    	},
+			{
+                        	key: 'Commits',
+                        	value: 'value'
+                    	},
+			{
+                        	key: 'Commits',
+                        	value: 'value'
+                    	}
+		    ]
+        return data;
+    }
+    
+    print(getData());
+%>
+

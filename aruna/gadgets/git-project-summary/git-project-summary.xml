@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <Module>
+    <ModulePrefs title="Summary of the project"
+                 author="WSO2 Dev governance"
+                 height="230"
+                 scrolling="true"
+                 tags="charts,bar,visualization,data"
+                 description=" Displays git summary of the project">
+     </ModulePrefs>
+    <UserPref name="dataSource"
+              display_name="Data Source"
+              default_value="../../Build-Status-Dashboard/apis/gitProjectStatus.jag">
+    </UserPref>
+    <UserPref name="updateGraph"
+              display_name="Update Interval (s)"
+              default_value="No">
+    </UserPref>
+    <Content type="html">
+    <![CDATA[
+
+	 <html>
+	 <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Summary of commits</title>
+		<link rel="stylesheet" href="../../Build-Status-Dashboard/css/bootstrap-custom.min.css">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript">		
+			function fetchData() {
+				var url = "../../Build-Status-Dashboard/apis/gitProjectStatus.jag";
+
+				$.ajax({
+				    url: url,
+				    type: "GET",
+				    dataType: "json",
+				    success: onDataReceived
+				});
+			}
+			function onDataReceived(data) {
+				//$('#container').highcharts(data);
+			     
+			}
+			$(function () {
+				fetchData();
+			});
+	    	</script>
+	
+	</head>
+
+	<body>
+		<div style="margin:10px;">	
+			<div id="container">
+				<table class="table table-striped">
+				   <tr><td>Total No Of Commits</td><td> 155,000</td></tr>
+				   <tr><td>Total No Of Pull requests</td><td> 4500</td></tr>
+			           <tr><td>Total No Of Commits</td><td> 155,000</td></tr>
+				   <tr><td>Total No Of Pull requests</td><td> 4500</td></tr>
+				   <tr><td>Total No Of Commits</td><td> 155,000</td></tr>
+				   <tr><td>Total No Of Pull requests</td><td> 4500</td></tr>
+				</table>
+				<h3><span class="label label-default">New</span></h3>
+			</div>
+			
+		<div>
+	</body>
+	</html>
+
+    ]]>
+</Content>
+</Module>
+
+

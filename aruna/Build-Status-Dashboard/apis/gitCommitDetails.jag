@@ -1,0 +1,53 @@
+<%
+    //http://localhost:9763/portal/gadgets/git-commit-details/git-commit-details.xml
+
+    function getData(){
+ 	var data  ={
+			"aaData": [
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"],
+					[ "Aruna Kumara", "aruna@wso2.org", "29.01.2014", "Initial commit"]
+			],
+			"aoColumns": [
+			    { "sTitle": "Author" },
+			    { "sTitle": "Author Email" },
+			    { "sTitle": "Data" },
+			    { "sTitle": "Commit Message" }
+			]
+		    }
+
+        return data;
+    }
+
+    print(getData());
+%>
+
