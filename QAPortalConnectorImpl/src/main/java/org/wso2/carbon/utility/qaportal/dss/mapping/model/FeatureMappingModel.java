@@ -13,8 +13,10 @@ public class FeatureMappingModel implements MappingModel{
 
     public String WSO2_QAP_REDMINE_URL;
 
+    public String WSO2_QAP_SUBJECT;
+
     public Feature getEntity(){
 
-        return new Feature(WSO2_QAP_FEATURE_ID, WSO2_QAP_DESCRIPTION, WSO2_QAP_REDMINE_URL);
+        return new Feature(WSO2_QAP_FEATURE_ID, WSO2_QAP_DESCRIPTION, WSO2_QAP_REDMINE_URL,WSO2_QAP_SUBJECT);
     }
 }

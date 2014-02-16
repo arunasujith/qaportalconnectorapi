@@ -225,7 +225,26 @@ public class QAPortalDataServiceConsumerImpl implements QAPortal{
 
     @Override
     public List<TestSuitScenarioAssociation> getTestScenariosByTestSuitId(int testSuitId) {
-        return null;
+
+        List<TestSuitScenarioAssociation> testScenarios = new ArrayList<TestSuitScenarioAssociation>();
+
+        try {
+            String json = client.get(Services.TEST_SUIT_TEST_SCENARIO_MAPPING_SERVICE,
+                    Resources.TEST_SCENARIOS_BY_TEST_SUIT_ID + testSuitId);
+
+            JsonNode arrayNode = JsonUtil.getNamedNode(json, "WSO2_QAP_TEST_SUIT_TEST_SCENARIO_MAPPINGCollection")
+                    .path("WSO2_QAP_TEST_SUIT_TEST_SCENARIO_MAPPING");
+
+            testScenarios = JsonUtil.getPOJOListFromJson(arrayNode, TestSuitScenarioAssociationMappingModel.class, TestSuitScenarioAssociation.class);
+
+        }
+        catch (IOException e) {
+
+            log.warn(e.getMessage());
+            e.printStackTrace();
+        }
+
+        return testScenarios;
     }
 
     @Override

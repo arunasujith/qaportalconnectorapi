@@ -29,5 +29,9 @@ public class Resources {
 
     public static final String TEST_CASES_BY_SCENARIO = "view/testcases_for_testscenario/";
 
+    public static final String TEST_SUITS_BY_TEST_PLAN_ID = "get/testsuits_by_test_plan_id/";
+
+    public static final String TEST_SCENARIOS_BY_TEST_SUIT_ID = "get/testscenarios_by_testsuit_id/";
+
     private Resources(){}
 }

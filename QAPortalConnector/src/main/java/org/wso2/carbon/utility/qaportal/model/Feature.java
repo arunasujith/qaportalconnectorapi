@@ -11,10 +11,13 @@ public class Feature {
 
     private String redmineURL;
 
-    public Feature(int featureId, String description, String redmineURL) {
+    private String subject;
+
+    public Feature(int featureId, String description, String redmineURL, String subject) {
         this.featureId = featureId;
         this.description = description;
         this.redmineURL = redmineURL;
+        this.subject = subject;
     }
 
     public int getFeatureId() {
@@ -39,5 +42,13 @@ public class Feature {
 
     public void setRedmineURL(String redmineURL) {
         this.redmineURL = redmineURL;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 }
