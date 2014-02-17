@@ -61,11 +61,6 @@
 	        gadgets.HubSettings.onConnect = function () {
              		gadgets.Hub.subscribe("req-param-channel", callback);
  		};
-		$(window).load(function(){	
-			gadgets.Hub.subscribe("req-param-channel", callback);
-		});
-
-
 		function callback(topic, params, subscriberData) {
 			fetchData(params);		
 
