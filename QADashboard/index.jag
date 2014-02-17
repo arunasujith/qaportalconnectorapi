@@ -527,6 +527,11 @@ if (!user) {
 <script src="js/portal-dashboard-designer.js"></script>
 <script>
     UESContainer.renderGadget('store-gadget-div', "http://localhost:9763/portal/gadgets/show-assets/show-assets.xml");
+
+
+   $(window).load(function(){
+	  	    
+    });
 </script>
 
 </body>

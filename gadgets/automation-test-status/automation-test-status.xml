@@ -6,6 +6,15 @@
                  scrolling="true"
                  tags="charts,pie,visualization"
                  description="Automation Test Status for the build">
+	<Require feature="pubsub-2">
+            <Param name="topics">
+                <![CDATA[
+			<Topic title="reqParam" name="req-param-channel"
+			description="Subscribes to request params channel" type="object"
+			subscribe="true"/>
+		]]>
+            </Param>
+        </Require>
      </ModulePrefs>
     <UserPref name="dataSource"
               display_name="Data Source"
@@ -25,25 +34,6 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script src="js/highcharts.js"></script>
 		<script src="js/exporting.js"></script>
-		<script type="text/javascript">		
-			function fetchData() {
-				var url = "../../QADashboard/apis/AutomationTestStatusData.jag";
-
-				$.ajax({
-				    url: url,
-				    type: "GET",
-				    dataType: "json",
-				    success: onDataReceived
-				});
-			}
-			function onDataReceived(data) {
-				$('#container').highcharts(data);
-			     
-			}
-			$(function () {
-				fetchData();
-			});
-	    	</script>
 	
 	</head>
 
@@ -52,6 +42,34 @@
 			<div id="container"></div>
 		<div>
 	</body>
+	<script type="text/javascript">		
+		function fetchData(params) {
+			var url = "../../QADashboard/apis/AutomationTestStatusData.jag";
+
+			$.ajax({
+			    url: url,
+			    type: "GET",
+			    dataType: "json",
+			    success: onDataReceived
+			});
+		}
+		function onDataReceived(data) {
+			$('#container').highcharts(data);
+		     
+		}
+	        gadgets.HubSettings.onConnect = function () {
+             		gadgets.Hub.subscribe("req-param-channel", callback);
+ 		};
+		$(window).load(function(){	
+			gadgets.Hub.subscribe("req-param-channel", callback);
+		});
+
+
+		function callback(topic, params, subscriberData) {
+			fetchData(params);		
+
+		}
+    	</script>
 	</html>
     ]]>
 </Content>

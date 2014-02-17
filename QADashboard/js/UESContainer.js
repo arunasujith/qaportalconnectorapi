@@ -72,8 +72,9 @@ var UESContainer;
         UESContainer.redrawGadget(elId, {view: "default"});
     };
 
-    window.onload = function () {
-        try {
+    function publish(){	
+
+	try {
             // Connect to the ManagedHub
             UESContainer.inlineClient = new OpenAjax.hub.InlineContainer(UESContainer.managedHub, 'container',
                 {
@@ -88,11 +89,18 @@ var UESContainer;
                 });
             //connect to the inline client
             UESContainer.inlineClient.connect();
-	    UESContainer.inlineClient.publish('req-param-channel', $.url().param());
 
         } catch (e) {
             console && console.error(e.message);
         }
+	
+	UESContainer.inlineClient.publish('req-param-channel', $.url().param());
+    }
+
+    window.onload = function () {
+        setTimeout(function(){
+		publish();
+	}, 100);
     };
 })();
 
