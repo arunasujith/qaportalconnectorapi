@@ -9,7 +9,7 @@
       </ModulePrefs>
     <UserPref name="dataSource"
               display_name="Data Source"
-              default_value="../../Build-Status-Dashboard/apis/topContibutors.jag">
+              default_value="../../Build-Status-Dashboard/apis/gitContributors.jag">
     </UserPref>
     <UserPref name="updateGraph"
               display_name="Update Interval (s)"
@@ -28,7 +28,7 @@
 		<script src="js/exporting.js"></script>
 		<script type="text/javascript">		
 			function fetchData() {
-				var url = "../../Build-Status-Dashboard/apis/topContibutors.jag";
+				var url = "../../Build-Status-Dashboard/apis/gitContributors.jag";
 
 				$.ajax({
 				    url: url,

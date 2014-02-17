@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <Module>
-    <ModulePrefs title="Summary of the project"
+    <ModulePrefs title="Emma Coverage Status"
                  author="WSO2 Dev governance"
                  height="230"
                  scrolling="true"
@@ -9,7 +9,7 @@
      </ModulePrefs>
     <UserPref name="dataSource"
               display_name="Data Source"
-              default_value="../../Build-Status-Dashboard/apis/gitProjectStatus.jag">
+              default_value="../../Build-Status-Dashboard/apis/emmaProjectStatus.jag">
     </UserPref>
     <UserPref name="updateGraph"
               display_name="Update Interval (s)"
@@ -21,12 +21,12 @@
 	 <html>
 	 <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>Summary of commits</title>
+		<title>Emma Coverage Status</title>
 		<link rel="stylesheet" href="../../Build-Status-Dashboard/css/bootstrap-custom.min.css">
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script type="text/javascript">		
 			function fetchData() {
-				var url = "../../Build-Status-Dashboard/apis/gitProjectStatus.jag";
+				var url = "../../Build-Status-Dashboard/apis/emmaProjectStatus.jag";
 
 				$.ajax({
 				    url: url,
@@ -64,8 +64,8 @@
 				</table>
 				<br/><br/>
 				<div style="text-align:center;height:100px;"> 
-					<img src="img/github.png" alt="Github Logo" height="100" width="100"> 
-					<h3><a style="height:100px;" class="label label-default" href="https://github.com" target="_blank">View Git Hub Repo</a></h3>
+					<img src="img/emma.png" alt="Emma Logo" height="40" width="180"> 
+					<h3><a style="height:100px;" class="label label-default" href="http://emma.sourceforge.net/" target="_blank">Visit Emma Official Site</a></h3>
 				<div>
 			</div>
 			

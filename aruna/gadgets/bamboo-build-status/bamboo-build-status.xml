@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <Module>
-    <ModulePrefs title="Summary of commits"
-                 author="WSO2 Dev governance"
+    <ModulePrefs title="Bamboo Build Success Rate"
+                 author="WSO2 Gadget Server"
                  height="230"
                  scrolling="true"
-                 tags="charts,bar,visualization,data"
-                 description=" Displays monthly summary of commits">
+                 tags="charts,pie,visualization"
+                 description="QA Status for the build">
      </ModulePrefs>
     <UserPref name="dataSource"
               display_name="Data Source"
-              default_value="../../Build-Status-Dashboard/apis/gitCommitSummary.jag">
+              default_value="../../Build-Status-Dashboard/apis/bambooBuildStatus.jag">
     </UserPref>
     <UserPref name="updateGraph"
               display_name="Update Interval (s)"
@@ -17,18 +17,17 @@
     </UserPref>
     <Content type="html">
     <![CDATA[
-
-	 <html>
+ 	 <html>
 	 <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>Summary of commits</title>
-		<link rel="stylesheet" href="../../Build-Status-Dashboard/css/bootstrap-theme.min.css">
-		<script src="js/jquery.min.js"></script>
+		<title>Bamboo Build Success Rate</title>
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script src="js/highcharts.js"></script>
 		<script src="js/exporting.js"></script>
 		<script type="text/javascript">		
 			function fetchData() {
-				var url = "../../Build-Status-Dashboard/apis/gitCommitSummary.jag";
+				var url = "../../Build-Status-Dashboard/apis/bambooBuildStatus.jag";
 
 				$.ajax({
 				    url: url,
@@ -38,23 +37,26 @@
 				});
 			}
 			function onDataReceived(data) {
+				Highcharts.setOptions({
+ 					colors: ['#50B432', '#a81800', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#ff0000', '#6AF9C4']
+				});
 				$('#container').highcharts(data);
-		     
+				
+			     
 			}
 			$(function () {
-				fetchData();
+				 fetchData();
 			});
 	    	</script>
 	
 	</head>
 
 	<body>
-		<div style="margin:10px;">	
+		<div >	
 			<div id="container"></div>
 		<div>
 	</body>
 	</html>
-
     ]]>
 </Content>
 </Module>
