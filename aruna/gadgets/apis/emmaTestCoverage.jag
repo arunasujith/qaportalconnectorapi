@@ -1,0 +1,201 @@
+<%
+  
+    function getBlockCoverage(){
+
+    	var data =  [
+                     ['Passed',   55.4],
+                     {
+                         name: 'Failed',
+                         y: 44.6,
+                         sliced: true,
+                         selected: true
+                     }
+                  ]
+
+     	return data;
+    }
+
+    function getClassCoverage(){
+
+    	var data =  [
+                     ['Passed',   55.4],
+                     {
+                         name: 'Failed',
+                         y: 44.6,
+                         sliced: true,
+                         selected: true
+                     }
+                  ]
+
+     	return data;
+    }
+
+   function getLineCoverage(){
+
+    	var data =  [
+                     ['Passed',   55.4],
+                     {
+                         name: 'Failed',
+                         y: 44.6,
+                         sliced: true,
+                         selected: true
+                     }
+                  ]
+
+     	return data;
+    }
+
+   function getMethodCoverage(){
+
+    	var data =  [
+                     ['Passed',   55.4],
+                     {
+                         name: 'Failed',
+                         y: 44.6,
+                         sliced: true,
+                         selected: true
+                     }
+                  ]
+
+     	return data;
+    }
+
+
+
+    var blockCoverage = {
+            chart: {
+
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: ''
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Block Coverage',
+                data:  getBlockCoverage()
+
+            }]
+    }
+
+    var classCoverage = {
+            chart: {
+
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: ''
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Class Coverage',
+                data:  getClassCoverage()
+
+            }]
+    }
+
+    var lineCoverage = {
+            chart: {
+
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: ''
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Line Coverage',
+                data:   getLineCoverage()
+
+            }]
+    }
+
+    var methodCoverage = {
+            chart: {
+
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: ''
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Method Coverage',
+                data:   getMethodCoverage()
+
+            }]
+    }
+
+
+   var data = {'block':blockCoverage,'class':classCoverage,'line':lineCoverage, 'method':methodCoverage}
+   print(data);
+%>
+

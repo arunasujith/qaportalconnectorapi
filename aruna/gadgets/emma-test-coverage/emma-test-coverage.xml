@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <Module>
+    <ModulePrefs title="Emma Test Coverage"
+                 author="WSO2 Gadget Server"
+                 height="230"
+                 scrolling="true"
+                 tags="charts,pie,visualization"
+                 description="Emma Test Coverage Reports">
+	<Require feature="pubsub-2">
+            <Param name="topics">
+                <![CDATA[
+			<Topic title="reqParam" name="req-param-channel"
+			description="Subscribes to request params channel" type="object"
+			subscribe="true"/>
+		]]>
+            </Param>
+        </Require>
+     </ModulePrefs>
+    <UserPref name="dataSource"
+              display_name="Data Source"
+              default_value="../../Build-Status-Dashboard/apis/emmaTestCoverage.jag">
+    </UserPref>
+    <UserPref name="updateGraph"
+              display_name="Update Interval (s)"
+              default_value="No">
+    </UserPref>
+    <Content type="html">
+    <![CDATA[
+ 	 <html>
+	 <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Emma Test Coveragess</title>
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script src="js/highcharts.js"></script>
+		<script src="js/exporting.js"></script>
+	
+	</head>
+
+	<body>
+		<div  class="container-fluid">	
+			<div class="row">
+				
+				<div id="chart1" class="col-xs-3"><div>
+				<div id="chart2" class="col-xs-3"><div>
+				<div id="chart3" class="col-xs-3"><div>				
+				<div id="chart4" class="col-xs-3"><div>
+
+			</div>
+		<div>
+	</body>
+	<script type="text/javascript">		
+		function fetchData(params) {
+			var url = (new gadgets.Prefs()).getString("dataSource")+ "?" + params;
+
+			$.ajax({
+			    url: url,
+			    type: "GET",
+			    dataType: "json",
+			    success: onDataReceived
+			});
+		}
+		function onDataReceived(data) {
+			$('#chart1').highcharts(data['block']);
+			$('#chart2').highcharts(data['class']);
+			$('#chart3').highcharts(data['line']);			
+			$('#chart4').highcharts(data['method']);
+		     
+		}
+	        gadgets.HubSettings.onConnect = function () {
+             		gadgets.Hub.subscribe("req-param-channel", callback);
+ 		};
+		function callback(topic, params, subscriberData) {
+			fetchData(params);		
+
+		}
+    	</script>
+	</html>
+    ]]>
+</Content>
+</Module>
+
+
