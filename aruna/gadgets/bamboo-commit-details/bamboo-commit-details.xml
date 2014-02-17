@@ -6,6 +6,15 @@
                  scrolling="true"
                  tags="charts,bar,visualization,data"
                  description=" Details of commits">
+        <Require feature="pubsub-2">
+            <Param name="topics">
+                <![CDATA[
+                    <Topic title="reqParam" name="req-param-channel"
+                    description="Subscribes to request params channel" type="object"
+                    subscribe="true"/>
+                ]]>
+            </Param>
+        </Require>
      </ModulePrefs>
     <UserPref name="dataSource"
               display_name="Data Source"
@@ -27,7 +36,7 @@
 		<script src="js/jquery.js"></script>
 		<script src="js/jquery.dataTables.min.js"></script>
 		<script type="text/javascript">		
-			function fetchData() {
+			function fetchData(params) {
 				var url = "../../Build-Status-Dashboard/apis/bambooCommitDetails.jag";
 
 				$.ajax({
@@ -37,13 +46,13 @@
 				    success: onDataReceived
 				});
 			}
-			function onDataReceived(data) {
-				$('#table').dataTable(data);
-			     
-			}
-			$(function () {
-				fetchData();
-			});
+			gadgets.HubSettings.onConnect = function () {
+             		gadgets.Hub.subscribe("req-param-channel", callback);
+            };
+            function callback(topic, params, subscriberData) {
+                fetchData(params);
+
+            }
 	    	</script>
 	
 	</head>

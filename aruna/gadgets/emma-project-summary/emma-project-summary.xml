@@ -6,6 +6,15 @@
                  scrolling="true"
                  tags="charts,bar,visualization,data"
                  description=" Displays git summary of the project">
+        <Require feature="pubsub-2">
+            <Param name="topics">
+                <![CDATA[
+                    <Topic title="reqParam" name="req-param-channel"
+                    description="Subscribes to request params channel" type="object"
+                    subscribe="true"/>
+                ]]>
+            </Param>
+        </Require>
      </ModulePrefs>
     <UserPref name="dataSource"
               display_name="Data Source"
@@ -25,7 +34,7 @@
 		<link rel="stylesheet" href="../../Build-Status-Dashboard/css/bootstrap-custom.min.css">
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script type="text/javascript">		
-			function fetchData() {
+			function fetchData(params) {
 				var url = "../../Build-Status-Dashboard/apis/emmaProjectStatus.jag";
 
 				$.ajax({
@@ -49,9 +58,13 @@
 				
 			     
 			}
-			$(function () {
-				fetchData();
-			});
+			gadgets.HubSettings.onConnect = function () {
+             		gadgets.Hub.subscribe("req-param-channel", callback);
+            };
+            function callback(topic, params, subscriberData) {
+                fetchData(params);
+
+            }
 	    	</script>
 	
 	</head>

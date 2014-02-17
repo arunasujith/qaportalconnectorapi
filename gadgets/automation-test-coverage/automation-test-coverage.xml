@@ -58,7 +58,7 @@
 			$('#container').highcharts(data);
 		     
 		}
-	        gadgets.HubSettings.onConnect = function () {
+	    gadgets.HubSettings.onConnect = function () {
              		gadgets.Hub.subscribe("req-param-channel", callback);
  		};
 		function callback(topic, params, subscriberData) {

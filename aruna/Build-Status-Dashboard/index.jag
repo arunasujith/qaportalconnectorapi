@@ -192,7 +192,7 @@ if (!user) {
         <div class="span12">
 <input type="hidden" value="design" id="inp-view-mode" />
 <input type="hidden" value="Build-Status-Dashboard" id="inp-dashboard" />
-<iframe style="display: none;height: 0;width: 0;" src="http://localhost:9763/store/hidden-logger.jag?user=<%=session.get('LOGGED_IN_USER')%>"></iframe>
+<iframe style="display: none;height: 0;width: 0;" src="http://localhost:9764/store/hidden-logger.jag?user=<%=session.get('LOGGED_IN_USER')%>"></iframe>
 
 <div id="gridster-cont" class="container-fluid">
 	<div id="dashboardName"><i class="icon-th-large"></i> <span></span></div>
@@ -203,7 +203,7 @@ if (!user) {
             
 			
             <li class="layout_block static" data-sizey="1" data-sizex="2" data-col="1" data-row="1"
-                data-url="" data-wid="1" data-prefs="{}" data-title="">
+                data-url="" data-wid="57" data-prefs="{}" data-title="">
                 <div class="grid_header">
            			<h3></h3>
             		<span class="grid_header_controls">
@@ -227,7 +227,7 @@ if (!user) {
             </li>
             
             <li class="layout_block static" data-sizey="1" data-sizex="2" data-col="3" data-row="1"
-                data-url="" data-wid="2" data-prefs="{}" data-title="">
+                data-url="" data-wid="58" data-prefs="{}" data-title="">
                 <div class="grid_header">
            			<h3></h3>
             		<span class="grid_header_controls">
@@ -251,7 +251,7 @@ if (!user) {
             </li>
             
             <li class="layout_block static" data-sizey="1" data-sizex="1" data-col="5" data-row="1"
-                data-url="" data-wid="3" data-prefs="{}" data-title="">
+                data-url="" data-wid="59" data-prefs="{}" data-title="">
                 <div class="grid_header">
            			<h3></h3>
             		<span class="grid_header_controls">
@@ -275,7 +275,7 @@ if (!user) {
             </li>
             
             <li class="layout_block static" data-sizey="1" data-sizex="1" data-col="6" data-row="1"
-                data-url="" data-wid="4" data-prefs="{}" data-title="">
+                data-url="" data-wid="60" data-prefs="{}" data-title="">
                 <div class="grid_header">
            			<h3></h3>
             		<span class="grid_header_controls">
@@ -288,58 +288,6 @@ if (!user) {
         		<div class="gadget-pref-cont">
         	
         		</div>
-                
-                
-                 <div class="designer-placeholder">
-
-        		</div>
-
-       			<button class="btn btn-add-gadget">Add Gadget</button>
-         		
-            </li>
-            
-            <li class="layout_block " data-sizey="2" data-sizex="2" data-col="1" data-row="2"
-                data-url="http://localhost:9763/portal/gadgets/git-commit-summary/git-commit-summary.xml" data-wid="5" data-prefs="{}" data-title="Summary of commits">
-                <div class="grid_header">
-           			<h3></h3>
-            		<span class="grid_header_controls">
-                		<a class="show-widget-pref" data-collapse="true"><i class="icon-cog"></i></a>
-                		<a class="expand-widget"><i class="icon-resize-full"></i></a>
-                		<a class="shrink-widget"><i class="icon-resize-small"></i></a>
-                		<a class="close-widget" href="#"><i class="icon-remove"></i></a>
-            		</span>
-        		</div>
-        		<div class="gadget-pref-cont">
-        	
-        		</div>
-                
-
-                <div class="add-gadget-item">
-
-                </div>
-                
-                
-            </li>
-            
-            <li class="layout_block " data-sizey="2" data-sizex="2" data-col="3" data-row="2"
-                data-url="" data-wid="6" data-prefs="{}" data-title="">
-                <div class="grid_header">
-           			<h3></h3>
-            		<span class="grid_header_controls">
-                		<a class="show-widget-pref" data-collapse="true"><i class="icon-cog"></i></a>
-                		<a class="expand-widget"><i class="icon-resize-full"></i></a>
-                		<a class="shrink-widget"><i class="icon-resize-small"></i></a>
-                		<a class="close-widget" href="#"><i class="icon-remove"></i></a>
-            		</span>
-        		</div>
-        		<div class="gadget-pref-cont">
-        	
-        		</div>
-                
-
-                <div class="add-gadget-item">
-
-                </div>
                 
                 
                  <div class="designer-placeholder">
@@ -351,7 +299,7 @@ if (!user) {
             </li>
             
             <li class="layout_block " data-sizey="2" data-sizex="2" data-col="5" data-row="2"
-                data-url="" data-wid="7" data-prefs="{}" data-title="">
+                data-url="http://localhost:9764/portal/gadgets/git-project-summary/git-project-summary.xml" data-wid="61" data-prefs="{}" data-title="Summary of the project">
                 <div class="grid_header">
            			<h3></h3>
             		<span class="grid_header_controls">
@@ -371,16 +319,10 @@ if (!user) {
                 </div>
                 
                 
-                 <div class="designer-placeholder">
-
-        		</div>
-
-       			<button class="btn btn-add-gadget">Add Gadget</button>
-         		
             </li>
             
-            <li class="layout_block " data-sizey="2" data-sizex="2" data-col="1" data-row="4"
-                data-url="" data-wid="8" data-prefs="{}" data-title="">
+            <li class="layout_block " data-sizey="2" data-sizex="4" data-col="1" data-row="2"
+                data-url="http://localhost:9764/portal/gadgets/git-commit-summary/git-commit-summary.xml" data-wid="62" data-prefs="{}" data-title="Summary of commits">
                 <div class="grid_header">
            			<h3></h3>
             		<span class="grid_header_controls">
@@ -400,16 +342,10 @@ if (!user) {
                 </div>
                 
                 
-                 <div class="designer-placeholder">
-
-        		</div>
-
-       			<button class="btn btn-add-gadget">Add Gadget</button>
-         		
             </li>
             
-            <li class="layout_block " data-sizey="2" data-sizex="2" data-col="3" data-row="4"
-                data-url="" data-wid="9" data-prefs="{}" data-title="">
+            <li class="layout_block " data-sizey="2" data-sizex="4" data-col="1" data-row="4"
+                data-url="http://localhost:9764/portal/gadgets/git-commit-details/git-commit-details.xml" data-wid="63" data-prefs="{}" data-title="Details of commits">
                 <div class="grid_header">
            			<h3></h3>
             		<span class="grid_header_controls">
@@ -429,16 +365,10 @@ if (!user) {
                 </div>
                 
                 
-                 <div class="designer-placeholder">
-
-        		</div>
-
-       			<button class="btn btn-add-gadget">Add Gadget</button>
-         		
             </li>
             
             <li class="layout_block " data-sizey="2" data-sizex="2" data-col="5" data-row="4"
-                data-url="" data-wid="10" data-prefs="{}" data-title="">
+                data-url="http://localhost:9764/portal/gadgets/top-contributors/top-contributors.xml" data-wid="64" data-prefs="{}" data-title="Top five contributors">
                 <div class="grid_header">
            			<h3></h3>
             		<span class="grid_header_controls">
@@ -458,12 +388,6 @@ if (!user) {
                 </div>
                 
                 
-                 <div class="designer-placeholder">
-
-        		</div>
-
-       			<button class="btn btn-add-gadget">Add Gadget</button>
-         		
             </li>
             
 
@@ -571,10 +495,11 @@ if (!user) {
 <script src="js/jquery.gridster.with-extras.min.js"></script>
 <script src="js/handlebars.js"></script>
 <script src="js/shindig.js"></script>
+<script src="js/purl.js"></script>
 <script src="js/UESContainer.js"></script>
 <script src="js/portal-dashboard-designer.js"></script>
 <script>
-    UESContainer.renderGadget('store-gadget-div', "http://localhost:9763/portal/gadgets/show-assets/show-assets.xml");
+    UESContainer.renderGadget('store-gadget-div', "http://localhost:9764/portal/gadgets/show-assets/show-assets.xml");
 </script>
 
 </body>
