@@ -417,7 +417,10 @@ if (!user) {
 					
 			
 		</ul>
+		
 	</div>
+	
+ 
 
 </div>
 <!-- /container -->
@@ -439,6 +442,7 @@ if (!user) {
     </div>
 
 </div>
+
 
 <script id="widget-template" type="text/x-handlebars-template">
 	<li class="layout_block">
@@ -518,6 +522,7 @@ if (!user) {
 <script src="js/jquery.gridster.with-extras.min.js"></script>
 <script src="js/handlebars.js"></script>
 <script src="js/shindig.js"></script>
+<script src="js/purl.js"></script>
 <script src="js/UESContainer.js"></script>
 <script src="js/portal-dashboard-designer.js"></script>
 <script>

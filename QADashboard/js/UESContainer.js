@@ -88,6 +88,7 @@ var UESContainer;
                 });
             //connect to the inline client
             UESContainer.inlineClient.connect();
+	    UESContainer.inlineClient.publish('req-param-channel', $.url().param());
 
         } catch (e) {
             console && console.error(e.message);
