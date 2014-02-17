@@ -36,7 +36,7 @@
 		<script src="js/exporting.js"></script>
 		<script type="text/javascript">		
 			function fetchData(params) {
-				var url = "../../Build-Status-Dashboard/apis/bambooBuildStatus.jag";
+				var url = (new gadgets.Prefs()).getString("dataSource")+ "?" + params;
 
 				$.ajax({
 				    url: url,

@@ -18,7 +18,7 @@
      </ModulePrefs>
     <UserPref name="dataSource"
               display_name="Data Source"
-              default_value="../../QADashboard/apis/TestStatusData.jag?buildId=20">
+              default_value="../../QADashboard/apis/TestStatusData.jag">
     </UserPref>
     <UserPref name="updateGraph"
               display_name="Update Interval (s)"
@@ -45,7 +45,7 @@
 	</body>
 	<script type="text/javascript">		
 		function fetchData(params) {
-			var url = "../../QADashboard/apis/TestStatusData.jag?buildId=20";
+		    var url = (new gadgets.Prefs()).getString("dataSource")+ "?" + params;
 
 			$.ajax({
 			    url: url,

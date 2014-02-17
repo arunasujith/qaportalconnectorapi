@@ -37,7 +37,7 @@
 		<script src="js/jquery.dataTables.min.js"></script>
 		<script type="text/javascript">		
 			function fetchData(params) {
-				var url = "../../Build-Status-Dashboard/apis/gitCommitDetails.jag";
+				var url = (new gadgets.Prefs()).getString("dataSource")+ "?" + params;
 
 				$.ajax({
 				    url: url,

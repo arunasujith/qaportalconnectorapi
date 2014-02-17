@@ -43,9 +43,10 @@
 			<div id="container"></div>
 		<div>
 	</body>
-	<script type="text/javascript">		
+	<script type="text/javascript">
+
 		function fetchData(params) {
-			var url = "../../QADashboard/apis/AutomationTestCoverage.jag";
+			var url = (new gadgets.Prefs()).getString("dataSource")+ "?" + params;
 
 			$.ajax({
 			    url: url,

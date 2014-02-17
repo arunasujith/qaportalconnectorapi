@@ -45,8 +45,8 @@
 		<div>
 	</body>
 	<script type="text/javascript">		
-		function fetchData() {
-			var url = "../../QADashboard/apis/TestStatusByOwner.jag";
+		function fetchData(params) {
+			var url = (new gadgets.Prefs()).getString("dataSource")+ "?" + params;
 
 			$.ajax({
 			    url: url,

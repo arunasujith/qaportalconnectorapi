@@ -94,7 +94,7 @@ var UESContainer;
             console && console.error(e.message);
         }
 	
-	UESContainer.inlineClient.publish('req-param-channel', $.url().param());
+	UESContainer.inlineClient.publish('req-param-channel',  $.url().attr('query'));
     }
 
     window.onload = function () {
