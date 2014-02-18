@@ -34,6 +34,7 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script src="js/highcharts.js"></script>
 		<script src="js/exporting.js"></script>
+		<script src="js/purl.js"></script>
 
 	
 	</head>
@@ -43,7 +44,12 @@
 			<div id="container"></div>
 		<div>
 	</body>
-	<script type="text/javascript">		
+	<script type="text/javascript">	
+
+		function onDataReceived(data) {
+			$('#container').highcharts(data);
+		}
+	
 		function fetchData(params) {
 		    var url = (new gadgets.Prefs()).getString("dataSource")+ "?" + params;
 
@@ -54,17 +60,24 @@
 			    success: onDataReceived
 			});
 		}
-		function onDataReceived(data) {
-			$('#container').highcharts(data);
-		     
-		}
+		
+
+		$(window).load(function(){
+
+			var url = $.url();
+
+			if(url.param('onRemote') === "true")
+			{			
+				fetchData(url.attr('query'));
+			}
+		});
+		
 	        gadgets.HubSettings.onConnect = function () {
              		gadgets.Hub.subscribe("req-param-channel", callback);
  		};
 
 		function callback(topic, params, subscriberData) {
 			fetchData(params);		
-
 		}
     	</script>
 	</html>
