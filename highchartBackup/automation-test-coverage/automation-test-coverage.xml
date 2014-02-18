@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <Module>
-    <ModulePrefs title="Emma Test Coverage"
+    <ModulePrefs title="Automation Test Coverage"
                  author="WSO2 Gadget Server"
                  height="230"
                  scrolling="true"
                  tags="charts,pie,visualization"
-                 description="Emma Test Coverage Reports">
-	<Require feature="pubsub-2">
+                 description="Automation Test if the tests.">
+	 <Require feature="pubsub-2">
             <Param name="topics">
                 <![CDATA[
 			<Topic title="reqParam" name="req-param-channel"
@@ -18,7 +18,7 @@
      </ModulePrefs>
     <UserPref name="dataSource"
               display_name="Data Source"
-              default_value="../../Build-Status-Dashboard/apis/emmaTestCoverage.jag">
+              default_value="../../QADashboard/apis/AutomationTestCoverage.jag">
     </UserPref>
     <UserPref name="updateGraph"
               display_name="Update Interval (s)"
@@ -29,24 +29,22 @@
  	 <html>
 	 <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>Emma Test Coveragess</title>
+		<title>Test Status / Test Owner</title>
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script src="js/highcharts.js"></script>
 		<script src="js/exporting.js"></script>
+		
 	
 	</head>
 
 	<body>
-		<div  class="container-fluid">	
-			<div class="row">
-				
-				<div id="chart" class="col-md-10"><div>
-
-			</div>
+		<div style="margin:10px;">	
+			<div id="container"></div>
 		<div>
 	</body>
-	<script type="text/javascript">		
+	<script type="text/javascript">
+
 		function fetchData(params) {
 			var url = (new gadgets.Prefs()).getString("dataSource")+ "?" + params;
 
@@ -58,13 +56,16 @@
 			});
 		}
 		function onDataReceived(data) {
-			$('#chart').highcharts(data);
+			$('#container').highcharts(data);
 		     
 		}
-		$(document).ready(function(){
+	    gadgets.HubSettings.onConnect = function () {
+             		gadgets.Hub.subscribe("req-param-channel", callback);
+ 		};
+		function callback(topic, params, subscriberData) {
+			fetchData(params);		
 
-			fetchData("");
-		});
+		}
     	</script>
 	</html>
     ]]>

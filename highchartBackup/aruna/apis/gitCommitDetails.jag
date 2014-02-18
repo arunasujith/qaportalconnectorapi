@@ -1,0 +1,57 @@
+<%
+    //http://localhost:9763/portal/gadgets/git-commit-details/git-commit-details.xml
+
+	function getCommitData(){
+		var query1  ="SELECT payload_authorName,payload_authorEMail,payload_authorDate,payload_commitMessage FROM GitCommitsSummary WHERE payload_repositoryID='carbon-kernel' ORDER BY payload_authorDate DESC ;";
+		var results;
+
+		config = {};
+		var db = new Database("jdbc:mysql://localhost:3306/greg", "root", "123", config);
+		
+		try{
+			var results = db.query(query1);
+	
+		}
+		catch(e){
+			print(e.toString());
+		}
+		finally{
+			db.close();
+		}
+		return results;
+	}
+
+	function getFormatteddData(){
+		var allCommits= [];
+		var results =  getCommitData();
+		
+		for(var i=0 ; i < results.length ; i++){
+			var singleCommit = [];
+			singleCommit.push(results[i].payload_authorName);
+			singleCommit.push(results[i].payload_authorEMail);
+			singleCommit.push(results[i].payload_authorDate);
+			singleCommit.push(results[i].payload_commitMessage);
+
+			allCommits.push(singleCommit);
+		}
+		//print(allCommits);
+		return allCommits;
+	}
+
+    function getData(){
+	 	var data  ={
+				"aaData": getFormatteddData(),
+				"aoColumns": [
+					{ "sTitle": "Author" },
+					{ "sTitle": "Author Email" },
+					{ "sTitle": "Date" },
+					{ "sTitle": "Commit Message" }
+				]
+				}
+
+		    return data;
+    }
+
+    print(getData());
+%>
+
