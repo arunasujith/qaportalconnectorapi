@@ -1,8 +1,8 @@
 package org.wso2.carbon.utility.qaportal;
 
-import org.wso2.carbon.utility.qaportal.model.TestResult;
-import org.wso2.carbon.utility.qaportal.model.TestScenario;
+import org.wso2.carbon.utility.qaportal.model.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,17 +51,101 @@ public class QAPortalStats {
 
     }
 
-    public static Map<String, Integer[]> getTestStatusByOwners(QAPortal portal, List<TestResult> results){
+    public static Map<String, Map<String,Integer>> getTestStatusByOwners(QAPortal portal, ProductBuild build){
 
-        Map<String, Integer[]> map = new HashMap<String, Integer[]>();
+        Map<String, Map<String,Integer>> map = new HashMap<String, Map<String, Integer>>();
 
-        for(TestResult tR : results)
-        {
-//            TestScenario scenario = portal.getTestCaseById(tR.getTestCaseId());
+        Map<String, List<TestCase>> data = getTestCasesByOwner(portal,getTestScenariosForBuild(portal, build));
 
-        }
+        List<TestResult> results = portal.getTestResultsByBuildId(build.getBuildId());
+
+
+        /////////////////////////////////continue
 
         return map;
+    }
+
+    private static Map<String, Integer> getTestStatusSummary(List<TestCase> testCases, List<TestResult> testResults){
+
+        Map<String, Integer> data = new HashMap<String, Integer>();
+
+        data.put(TEST_STATUS_PASSED,new Integer(0));
+        data.put(TEST_STATUS_FAILED,new Integer(0));
+        data.put(TEST_STATUS_IN_PROGRESS,new Integer(0));
+
+        for(TestResult tR: testResults){
+
+            if(tR.getTestStatus().equals(TEST_STATUS_PASSED)){
+
+            }else if(tR.getTestStatus().equals(TEST_STATUS_FAILED)){
+
+            }else if(tR.getTestStatus().equals(TEST_STATUS_IN_PROGRESS)){
+
+            }
+            testResults.remove(tR);
+        }
+
+        int notExecuted = testCases.size() - testResults.size();
+        data.put(TEST_STATUS_NOT_EXECUTED,new Integer(notExecuted));
+
+        return data;
+    }
+
+    private static Map<String, List<TestCase>> getTestCasesByOwner(QAPortal portal,  List<TestSuitScenarioAssociation> testScenarios){
+
+        Map<String, List<TestCase>> data = new HashMap<String, List<TestCase>>();
+
+        for(TestSuitScenarioAssociation entry:testScenarios)
+        {
+
+            if(data.containsKey(entry.getOwner())){
+
+                data.get(entry.getOwner()).addAll(portal.getTestCasesByTestScenarioId(entry.getTestScenarioId()));
+            }
+            else
+            {
+                data.put(entry.getOwner(), portal.getTestCasesByTestScenarioId(entry.getTestScenarioId()));
+            }
+        }
+
+        return data;
+    }
+
+    private static Map<String, List<TestCase>> getTestCasesByPriority(QAPortal portal,  List<TestSuitScenarioAssociation> testScenarios){
+
+        Map<String, List<TestCase>> data = new HashMap<String, List<TestCase>>();
+
+        for(TestSuitScenarioAssociation entry:testScenarios)
+        {
+
+            if(data.containsKey(entry.getPriority())){
+
+                data.get(entry.getPriority()).addAll(portal.getTestCasesByTestScenarioId(entry.getTestScenarioId()));
+            }
+            else
+            {
+                data.put(entry.getPriority(), portal.getTestCasesByTestScenarioId(entry.getTestScenarioId()));
+            }
+        }
+
+        return data;
+    }
+
+    private static List<TestSuitScenarioAssociation> getTestScenariosForBuild(QAPortal portal, ProductBuild build){
+
+        TestPlan plan = portal.getTestPlanById(build.getTestPlanId());
+
+        List<TestSuit> testSuits = portal.getTestSuitsByTestPlanId(plan.getTestPlanId());
+
+        List<TestSuitScenarioAssociation> testScenarios = new ArrayList<TestSuitScenarioAssociation>();
+
+        for(TestSuit tS : testSuits)
+        {
+            testScenarios.addAll(portal.getTestScenariosByTestSuitId(tS.getTestSuitId()));
+
+        }
+        return testScenarios;
 
     }
+
 }

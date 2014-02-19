@@ -98,9 +98,10 @@ var UESContainer;
     }
 
     window.onload = function () {
+
         setTimeout(function(){
 		publish();
-	}, 100);
+	}, 2000);
     };
 })();
 
