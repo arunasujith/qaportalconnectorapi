@@ -8,50 +8,36 @@
 
     function getData(){
 
-    var data =  [
-                     ['Covered',  75.4],
-                     {
-                         name: 'Not Covered',
-                         y: 24.6,
-                         sliced: true,
-                         selected: true
-                     }
-                  ]
+		var data =  [
+				{
+					"series0" : {"color" : "#8bbc21", "label" : "Covered", "data" : "32"}, 
+					"series1" : {"color" : "#910000", "label" : "Not Covered", "data" : "22"}
+				}
 
-     return data;
-    }
+			    ] 
 
-    var data = {
-            chart: {
+		return data;
+	}
 
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false
-            },
-            title: {
-                text: ''
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: true,
-                        color: '#000000',
-                        connectorColor: '#000000',
-                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-                    }
-                }
-            },
-            series: [{
-                type: 'pie',
-                name: 'test cases',
-                data:  getData()
+	var options = {
+		   series: {
+			pie: {
+			    show: true
+			}
+		    },
+		    legend: {
+			show: false
+		    },
+		     grid: {
+			hoverable: true,
+			clickable: true
+		     }
+	};
+	function labelFormatter(label, series) {
+		return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
+	}
 
-            }]
-    }
-   print(data);
+
+
+   print({'content':getData(),'options':options});
 %>

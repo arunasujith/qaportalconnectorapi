@@ -6,52 +6,38 @@
 //var qaPortal = carbon.server.osgiService('org.wso2.carbon.utility.qaportal.QAPortal');
 //var buildId = request.getParameter("buildId");
 
-    function getData(){
+   function getData(){
 
-    var data =  [
-                     ['Passed',   55.4],
-                     {
-                         name: 'Failed',
-                         y: 44.6,
-                         sliced: true,
-                         selected: true
-                     }
-                  ]
+		var data =  [
+				{
+					"series0" : {"color" : "#8bbc21", "label" : "Passed", "data" : "32"}, 
+					"series1" : {"color" : "#910000", "label" : "Failed", "data" : "1"}
+				}
 
-     return data;
-    }
+			    ] 
 
-    var data = {
-            chart: {
+		return data;
+	}
 
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false
-            },
-            title: {
-                text: ''
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: true,
-                        color: '#000000',
-                        connectorColor: '#000000',
-                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-                    }
-                }
-            },
-            series: [{
-                type: 'pie',
-                name: 'Automation Tests',
-                data:  getData()
+	var options = {
+		   series: {
+			pie: {
+			    show: true
+			}
+		    },
+		    legend: {
+			show: false
+		    },
+		     grid: {
+			hoverable: true,
+			clickable: true
+		     }
+	};
+	function labelFormatter(label, series) {
+		return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
+	}
 
-            }]
-    }
-   print(data);
+
+
+   print({'content':getData(),'options':options});
 %>

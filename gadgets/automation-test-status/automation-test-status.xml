@@ -25,48 +25,55 @@
               default_value="No">
     </UserPref>
     <Content type="html">
-    <![CDATA[
- 	 <html>
-	 <head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>Test Status / Test Owner</title>
-		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-		<script src="js/highcharts.js"></script>
-		<script src="js/exporting.js"></script>
-	
-	</head>
+        <![CDATA[
+ <html>
+ <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Test Statsus</title>
+	<link href="../../themes/portal/css/flot-graph.css" rel="stylesheet" type="text/css">
+	<link href="../../themes/portal/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<script language="javascript" type="text/javascript" src="../../js/flot/excanvas.min.js"></script>
+	<script language="javascript" type="text/javascript" src="../../js/flot/jquery.js"></script>
+	<script language="javascript" type="text/javascript" src="../../js/bootstrap.js"></script>
+	<script language="javascript" type="text/javascript" src="../../js/flot/jquery.flot.js"></script>
+	<script language="javascript" type="text/javascript" src="../../js/flot/jquery.flot.pie.js"></script>
+	<script language="javascript" type="text/javascript" src="../../js/flot/jquery.flot.resize.js"></script>
+	<script language="javascript" type="text/javascript" src="../../../QADashboard/js/purl.js"></script>
+	<script language="javascript" type="text/javascript" src="../../../QADashboard/js/qa-dashboard-core.js"></script>
 
-	<body>
-		<div style="margin:10px;">	
-			<div id="container"></div>
-		<div>
-	</body>
-	<script type="text/javascript">		
-		function fetchData(params) {
-			var url = (new gadgets.Prefs()).getString("dataSource")+ "?" + params;
+	<script  language="javascript" type="text/javascript">
 
-			$.ajax({
-			    url: url,
-			    type: "GET",
-			    dataType: "json",
-			    success: onDataReceived
-			});
-		}
-		function onDataReceived(data) {
-			$('#container').highcharts(data);
-		     
-		}
-	        gadgets.HubSettings.onConnect = function () {
-             		gadgets.Hub.subscribe("req-param-channel", callback);
- 		};
-		function callback(topic, params, subscriberData) {
-			fetchData(params);		
+	</script>
+</head>
 
-		}
-    	</script>
-	</html>
+<body>
+	<div>
+			<div id="optionPanel">
+				<div id="optionsLeft">
+					<button class="pause btn btn-mini">Pause</button>
+				</div>
+				<div id="optionsRight" class="seriesContainer">
+				    <div class="btn-group">
+				    <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#">
+				    Series
+				    <span class="caret"></span>
+				    </a>
+				    <ul class="dropdown-menu series-toggle pull-right" role="menu" aria-labelledby="dLabel">
+
+					</ul>
+				    </div>
+				</div>
+
+			</div>
+			<div id="placeholder" class="demo-placeholder" style="height:90%"></div>
+
+
+	</div>
+</body>
+</html>
+
     ]]>
+
 </Content>
 </Module>
 
