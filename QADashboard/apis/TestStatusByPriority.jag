@@ -19,7 +19,7 @@
 			d3.push([i, parseInt(Math.random() * 30)]);
 		}
 
-		var data = [ {"data": d1,"label": "Low"}, {"data": d2,"label": "Medium"}, {"data": d3,"label": "High"} ];
+		var data = [ {"data": d1,"label": "Low","color" : "#8bbc21"}, {"data": d2,"label": "Medium","color" : "#0d233a"}, {"data": d3,"label": "High","color" : "#2f7ed8"} ];
 
 
 		//reverse data
@@ -44,7 +44,8 @@
 			},
 			bars: {
 			    show: true,
-			    barWidth: 0.2,
+			    barWidth: 0.275,
+			    fill: 1.0,
 			    align: "center",
 			    horizontal:true	
 			},
