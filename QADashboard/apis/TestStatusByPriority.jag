@@ -1,49 +1,64 @@
 <%
-    function getDataSeries(){
+   	
+	var labels = [[0, "Not Executed"], [1, "In Progress"], [2, "Failed"], [3, "Passed"]]
+	
+	function getData(){
 
-     var data =  [{
-                      name: 'High',
-                      data: [5, 3, 4, 7]
-                  }, {
-                      name: 'Medium',
-                      data: [2, 2, 3, 2]
-                  }, {
-                      name: 'Low',
-                      data: [3, 4, 4, 2]
-                  }]
+		var d1 = [];
+		for (var i = 0; i <= 3; i += 1) {
+			d1.push([i, parseInt(Math.random() * 30)]);
+		}
 
-      return data;
+		var d2 = [];
+		for (var i = 0; i <= 3; i += 1) {
+			d2.push([i, parseInt(Math.random() * 30)]);
+		}
 
-    }
+		var d3 = [];
+		for (var i = 0; i <= 3; i += 1) {
+			d3.push([i, parseInt(Math.random() * 30)]);
+		}
+
+		var data = [ {"data": d1,"label": "Low"}, {"data": d2,"label": "Medium"}, {"data": d3,"label": "High"} ];
 
 
-    var dataWithOptions = {
-                              chart: {
-                                  type: 'bar'
-                              },
-                              title: {
-                                  text: ''
-                              },
-                              xAxis: {
-                                  categories: ['Not Executed', 'In Progress', 'Passed', 'Failed']
-                              },
-                              yAxis: {
-                                  min: 0,
-                                  title: {
-                                      text: 'No of Test Cases'
-                                  }
-                              },
-                              legend: {
-                                  backgroundColor: '#FFFFFF',
-                                  reversed: true
-                              },
-                              plotOptions: {
-                                  series: {
-                                      stacking: 'normal'
-                                  }
-                              },
-                                  series: getDataSeries()
-                          }
-    print(dataWithOptions);
+		//reverse data
+		for (series in data){
+		  var s = data[series];
+		    for (i=0;i<s.data.length;i++){
+		       var tmp = s.data[i][0];
+		       s.data[i][0] = s.data[i][1];
+		       s.data[i][1] = tmp;        
+		    }
+		}
+
+		return [data];
+	}
+
+	var options = {
+		  series: {
+			stack: true,
+			lines: {
+			    show: false,
+			    steps: false
+			},
+			bars: {
+			    show: true,
+			    barWidth: 0.2,
+			    align: "center",
+			    horizontal:true	
+			},
+		    },
+		    yaxis: {
+			ticks: labels
+		    }
+	};
+	function labelFormatter(label, series) {
+		return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
+	}
+
+
+
+   print({'content':getData(),'options':options});
 %>
-
+ 
