@@ -1,70 +1,33 @@
 <%
-    function getNames(){
+   	
+	var labels = [[0, "Not Executed"], [1, "In Progress"], [2, "Failed"], [3, "Passed"]]
+	
+	function getData(){
 
-        var data =  ['Kavith', 'Pubudu', 'Jayanga','Sajith', 'Aruna', 'Uvindra'];
+		var data = [ ["January", 10], ["February", 8], ["March", 4], ["April", 13], ["May", 17], ["June", 9] ];
 
-        return data;
-    }
+		return [[data]];
+	}
 
-    function getData(){
+	var options = {
+		series: {
+			bars: {
+				show: true,
+				barWidth: 0.6,
+				align: "center"
+			}
+		},
+		xaxis: {
+			mode: "categories",
+			tickLength: 0
+		}
+	};
+	function labelFormatter(label, series) {
+		return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
+	}
 
-        var data  = [
-                        {
-                            name: 'In Progress',
-                            data: [49, 71, 106, 129, 144, 176]
 
-                        }, {
-                            name: 'Not Executed',
-                            data: [83, 78, 98, 93, 106, 84]
 
-                        }, {
-                            name: 'Passed',
-                            data: [48, 38, 39, 41, 47, 48]
-
-                        }, {
-                            name: 'Failed',
-                            data: [42, 33, 34, 39, 52, 75]
-
-                        }
-                    ]
-        return data;
-    }
-    var dataWithOptions =  {
-                chart: {
-                    type: 'column'
-                },
-                title: {
-                    text: ''
-                },
-                subtitle: {
-                    text: ''
-                },
-                xAxis: {
-                    categories:getNames()
-                },
-                yAxis: {
-                    min: 0,
-                    title: {
-                        text: 'No of test cases'
-                    }
-                },
-                tooltip: {
-                    headerFormat: '<span style="font-size:12px">{point.key}</span><table>',
-                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                        '<td style="padding:0"><b>{point.y}</b></td></tr>',
-                    footerFormat: '</table>',
-                    shared: true,
-                    useHTML: true
-                },
-                plotOptions: {
-                    column: {
-                        pointPadding: 0.2,
-                        borderWidth: 0
-                    }
-                },
-                series:getData()
-            }
-
-    print(dataWithOptions);
+   print({'content':getData(),'options':options});
 %>
-
+ 
