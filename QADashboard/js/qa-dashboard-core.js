@@ -74,6 +74,7 @@ function onDataReceived(data) {
     seriesContainer.find(":checkbox").click(function(){
         filterSeries(chartData);
     });
+	
 }
 
 
@@ -96,71 +97,9 @@ var drawChart = function(data,options){
 
 	$.plot("#placeholder", data, options);
 
-        var previousPoint = null;
-        $("#placeholder").bind("plothover", function (event, pos, item) {
 
-            if ($("#enablePosition:checked").length > 0) {
-                var str = "(" + pos.x.toFixed(2) + ", " + pos.y.toFixed(2) + ")";
-                $("#hoverdata").text(str);
-            }
-
-
-            if (item) {
-                if (previousPoint != item.dataIndex) {
-
-                    previousPoint = item.dataIndex;
-
-                    $("#tooltip").remove();
-                    var x = item.datapoint[0].toFixed(2),
-                        y = item.datapoint[1].toFixed(2);
-
-                    showTooltip(item.pageX, item.pageY,
-                        item.series.label + " of " + x + " = " + y);
-                }
-            } else {
-                $("#tooltip").remove();
-                previousPoint = null;
-            }
-        });
-
-
-        // connect graph and overview graph
-
-        $("#placeholder").bind("plotselected", function (event, ranges) {
-
-            // clamp the zooming to prevent eternal zoom
-
-            if (ranges.xaxis.to - ranges.xaxis.from < 0.00001) {
-                ranges.xaxis.to = ranges.xaxis.from + 0.00001;
-            }
-
-            if (ranges.yaxis.to - ranges.yaxis.from < 0.00001) {
-                ranges.yaxis.to = ranges.yaxis.from + 0.00001;
-            }
-
-            // do the zooming
-
-            plot = $.plot("#placeholder", data,
-                $.extend(true, {}, options, {
-                    xaxis: { min: ranges.xaxis.from, max: ranges.xaxis.to },
-                    yaxis: { min: ranges.yaxis.from, max: ranges.yaxis.to }
-                })
-            );
-
-            overview.setSelection(ranges, true);
-        });
-
-        $("#overview").bind("plotselected", function (event, ranges) {
-            plot.setSelection(ranges);
-        });
 }
 
-function showTooltip(x, y, contents) {
-        $("<div id='tooltip'>" + contents + "</div>").css({
-            top: y + 5,
-            left: x + 5
-            }).appendTo("body").fadeIn(200);
-}
 function addSeriesCheckboxes(data){
 	// insert checkboxes 
 	var seriesContainer = $("#optionsRight .series-toggle");

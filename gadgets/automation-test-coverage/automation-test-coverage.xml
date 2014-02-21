@@ -39,6 +39,9 @@
 	<script language="javascript" type="text/javascript" src="../../js/flot/jquery.flot.pie.js"></script>
 	<script language="javascript" type="text/javascript" src="../../js/flot/jquery.flot.resize.js"></script>
 	<script language="javascript" type="text/javascript" src="../../../QADashboard/js/purl.js"></script>
+	<script language="javascript" type="text/javascript" src="../../../QADashboard/js/tooltips.js"></script>
+	<script language="javascript" type="text/javascript" src="../../../QADashboard/js/jquery.flot.JUMlib.js"></script>
+	<script language="javascript" type="text/javascript" src="../../../QADashboard/js/jquery.flot.spiral.js"></script>
 	<script language="javascript" type="text/javascript" src="../../../QADashboard/js/qa-dashboard-core.js"></script>
 
 	<script  language="javascript" type="text/javascript">

@@ -41,7 +41,6 @@ public class QAPortalStats {
             }
 
         }
-
         map.put(TEST_STATUS_IN_PROGRESS, (inPogressCount/total)*100);
         map.put(TEST_STATUS_PASSED, (passedCount/total)*100);
         map.put(TEST_STATUS_FAILED, (failedCount/total)*100);
