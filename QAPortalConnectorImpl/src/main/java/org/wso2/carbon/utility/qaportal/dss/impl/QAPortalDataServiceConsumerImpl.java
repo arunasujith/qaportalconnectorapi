@@ -332,7 +332,7 @@ public class QAPortalDataServiceConsumerImpl implements QAPortal{
             JsonNode node = JsonUtil.getNamedNode(json,"WSO2_QAP_TEST_RESULTFORBUILDCollection")
                     .path("WSO2_QAP_TEST_RESULTFORBUILD");
 
-            testResult = JsonUtil.getPOJOFromJson(node, TestResultMappingModel.class, TestResult.class);
+            testResult = JsonUtil.getPOJOListFromJson(node, TestResultMappingModel.class, TestResult.class).get(0);
 
         }
         catch (IOException e) {

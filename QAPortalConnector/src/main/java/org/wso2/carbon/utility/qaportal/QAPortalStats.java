@@ -20,13 +20,19 @@ public class QAPortalStats {
 
     public static String TEST_STATUS_NOT_EXECUTED = "NOT EXECUTED";
 
-    public static Map<String,Double> getTestStatus(List<TestResult> results){
+    public static String TEST_AUTOMATION_STATUS_COVERED = "YES";
 
-        double total = results.size();
+    public static String TEST_AUTOMATION_STATUS_NOT_COVERED = "NO";
 
-        int inPogressCount = 0, passedCount = 0, failedCount = 0, notExecutedCount = 0;
+    public static Map<String,Integer> getTestStatus(QAPortal portal, ProductBuild build){
 
-        Map<String,Double> map = new HashMap<String, Double>();
+        List<TestResult> results =  portal.getTestResultsByBuildId(build.getBuildId());
+
+        int total = getTestCasesForBuild(portal, build).size();
+
+        int inPogressCount = 0, passedCount = 0, failedCount = 0;
+
+        Map<String,Integer> map = new HashMap<String, Integer>();
 
         for(TestResult tR : results)
         {
@@ -36,17 +42,68 @@ public class QAPortalStats {
                 passedCount++;
             } else if(tR.getTestStatus().equals(TEST_STATUS_FAILED)){
                 failedCount++;
-            } else if(tR.getTestStatus().equals(TEST_STATUS_NOT_EXECUTED)){
-                notExecutedCount++;
+            }
+        }
+        map.put(TEST_STATUS_IN_PROGRESS, inPogressCount);
+        map.put(TEST_STATUS_PASSED, passedCount);
+        map.put(TEST_STATUS_FAILED, failedCount);
+        map.put(TEST_STATUS_NOT_EXECUTED, (total - results.size()));
+
+        return map;
+    }
+
+    public static Map<String,Integer> getAutomationTestStatus(QAPortal portal, ProductBuild build){
+
+        Map<String,Integer> map = new HashMap<String, Integer>();
+
+        map.put(TEST_STATUS_PASSED,new Integer(0));
+        map.put(TEST_STATUS_FAILED,new Integer(0));
+
+        List<TestCase> allTests = getTestCasesForBuild(portal, build);
+
+        for(TestCase tC:allTests){
+
+            TestResult tR = portal.getTestResultByTestCaseAndBuild(build.getBuildId(), tC.getTestCaseId());
+
+            if(tR.getTestStatus().equals(TEST_STATUS_PASSED)){
+                map.put(TEST_STATUS_PASSED, map.get(TEST_STATUS_PASSED) + 1);
+
+            }else if(tR.getTestStatus().equals(TEST_STATUS_FAILED)){
+
+                map.put(TEST_STATUS_FAILED, map.get(TEST_STATUS_FAILED) + 1);
+
             }
 
         }
-        map.put(TEST_STATUS_IN_PROGRESS, (inPogressCount/total)*100);
-        map.put(TEST_STATUS_PASSED, (passedCount/total)*100);
-        map.put(TEST_STATUS_FAILED, (failedCount/total)*100);
-        map.put(TEST_STATUS_NOT_EXECUTED, (notExecutedCount/total)*100);
 
         return map;
+
+    }
+
+   public static Map<String,Integer> getAutomationTestCoverage(QAPortal portal, ProductBuild build){
+       Map<String,Integer> map = new HashMap<String, Integer>();
+
+       map.put(TEST_AUTOMATION_STATUS_COVERED,new Integer(0));
+       map.put(TEST_AUTOMATION_STATUS_NOT_COVERED,new Integer(0));
+
+       List<TestCase> allTests = getTestCasesForBuild(portal, build);
+
+       for(TestCase tC:allTests){
+
+           TestResult tR = portal.getTestResultByTestCaseAndBuild(build.getBuildId(), tC.getTestCaseId());
+
+           if(tR.getTestStatus().equals(TEST_AUTOMATION_STATUS_COVERED)){
+               map.put(TEST_AUTOMATION_STATUS_COVERED, map.get(TEST_AUTOMATION_STATUS_COVERED) + 1);
+
+           }else if(tR.getTestStatus().equals(TEST_AUTOMATION_STATUS_NOT_COVERED)){
+
+               map.put(TEST_AUTOMATION_STATUS_NOT_COVERED, map.get(TEST_AUTOMATION_STATUS_NOT_COVERED) + 1);
+
+           }
+
+       }
+
+       return map;
 
     }
 
@@ -63,6 +120,22 @@ public class QAPortalStats {
         }
 
         return map;
+    }
+
+    public static Map<String, Map<String,Integer>> getTestStatusByPriority(QAPortal portal, ProductBuild build){
+
+        Map<String, Map<String,Integer>> map = new HashMap<String, Map<String, Integer>>();
+
+        Map<String, List<TestCase>> data = getTestCasesByPriority(portal, getTestScenariosForBuild(portal, build));
+
+        for (Map.Entry<String, List<TestCase>> entry : data.entrySet())
+        {
+            map.put(entry.getKey(), getTestStatusSummary(portal, entry.getValue(), build));
+
+        }
+
+        return map;
+
     }
 
     private static Map<String, Integer> getTestStatusSummary(QAPortal portal, List<TestCase> testCases, ProductBuild build){
@@ -158,5 +231,19 @@ public class QAPortalStats {
         return testScenarios;
 
     }
+
+    private static List<TestCase> getTestCasesForBuild(QAPortal portal, ProductBuild build){
+
+        List<TestCase> testCaseList = new ArrayList<TestCase>();
+
+        for(TestSuitScenarioAssociation tS:getTestScenariosForBuild(portal,build)){
+
+            testCaseList.addAll(portal.getTestCasesByTestScenarioId(tS.getTestScenarioId()));
+        }
+
+        return testCaseList;
+
+    }
+
 
 }
