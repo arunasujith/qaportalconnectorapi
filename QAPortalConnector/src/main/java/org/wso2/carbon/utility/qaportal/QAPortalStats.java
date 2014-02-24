@@ -56,36 +56,48 @@ public class QAPortalStats {
 
         Map<String, List<TestCase>> data = getTestCasesByOwner(portal,getTestScenariosForBuild(portal, build));
 
-        List<TestResult> results = portal.getTestResultsByBuildId(build.getBuildId());
+        for (Map.Entry<String, List<TestCase>> entry : data.entrySet())
+        {
+            map.put(entry.getKey(), getTestStatusSummary(portal, entry.getValue(), build));
 
-
-        /////////////////////////////////continue
+        }
 
         return map;
     }
 
-    private static Map<String, Integer> getTestStatusSummary(List<TestCase> testCases, List<TestResult> testResults){
+    private static Map<String, Integer> getTestStatusSummary(QAPortal portal, List<TestCase> testCases, ProductBuild build){
 
         Map<String, Integer> data = new HashMap<String, Integer>();
+        List<TestResult> testResults = new ArrayList<TestResult>();
 
         data.put(TEST_STATUS_PASSED,new Integer(0));
         data.put(TEST_STATUS_FAILED,new Integer(0));
         data.put(TEST_STATUS_IN_PROGRESS,new Integer(0));
 
-        for(TestResult tR: testResults){
+        for(TestCase tC:testCases){
 
-            if(tR.getTestStatus().equals(TEST_STATUS_PASSED)){
+            testResults.add(portal.getTestResultByTestCaseAndBuild(build.getBuildId(),tC.getTestCaseId()));
 
-            }else if(tR.getTestStatus().equals(TEST_STATUS_FAILED)){
-
-            }else if(tR.getTestStatus().equals(TEST_STATUS_IN_PROGRESS)){
-
-            }
-            testResults.remove(tR);
         }
 
         int notExecuted = testCases.size() - testResults.size();
         data.put(TEST_STATUS_NOT_EXECUTED,new Integer(notExecuted));
+
+        for(TestResult tR: testResults){
+
+            if(tR.getTestStatus().equals(TEST_STATUS_PASSED)){
+               data.put(TEST_STATUS_PASSED, data.get(TEST_STATUS_PASSED) + 1);
+
+            }else if(tR.getTestStatus().equals(TEST_STATUS_FAILED)){
+
+                data.put(TEST_STATUS_FAILED, data.get(TEST_STATUS_FAILED) + 1);
+
+            }else if(tR.getTestStatus().equals(TEST_STATUS_IN_PROGRESS)){
+
+                data.put(TEST_STATUS_IN_PROGRESS, data.get(TEST_STATUS_IN_PROGRESS) + 1);
+            }
+        }
+
 
         return data;
     }

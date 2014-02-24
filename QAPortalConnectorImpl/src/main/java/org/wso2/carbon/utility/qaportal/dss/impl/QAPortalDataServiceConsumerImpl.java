@@ -320,6 +320,30 @@ public class QAPortalDataServiceConsumerImpl implements QAPortal{
     }
 
     @Override
+    public TestResult getTestResultByTestCaseAndBuild(int productBuildId, int testCaseId) {
+        TestResult testResult = null;
+
+        String json ="{}";
+
+        try {
+            json = client.get(Services.TEST_RESULT_SERVICE,
+                    Resources.TEST_RESULT_BY_TEST_CASE_AND_BUILD + productBuildId+"/"+testCaseId);
+
+            JsonNode node = JsonUtil.getNamedNode(json,"WSO2_QAP_TEST_RESULTFORBUILDCollection")
+                    .path("WSO2_QAP_TEST_RESULTFORBUILD");
+
+            testResult = JsonUtil.getPOJOFromJson(node, TestResultMappingModel.class, TestResult.class);
+
+        }
+        catch (IOException e) {
+
+            log.warn(e.getMessage() + "\nServer Response:" + json);
+        }
+
+        return testResult;
+    }
+
+    @Override
     public TestCase getTestCaseById(int testCaseId) {
 
         TestCase testCase = null;

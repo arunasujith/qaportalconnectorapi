@@ -111,6 +111,16 @@ public interface QAPortal {
 
     /**
      *
+     *
+     * @param productBuildId
+     *
+     * @return
+     */
+    public TestResult getTestResultByTestCaseAndBuild(int productBuildId, int testCaseId);
+
+
+    /**
+     *
      * @param testCaseId
      *
      * @return
