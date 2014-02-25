@@ -1,10 +1,18 @@
 <%
-//importClass(Packages.org.wso2.carbon.utility.qaportal.dss.util.JsonUtil);
-//importClass(Packages.org.wso2.carbon.utility.qaportal.QAPortalStats);
-//
-//var carbon = require('carbon');
-//var qaPortal = carbon.server.osgiService('org.wso2.carbon.utility.qaportal.QAPortal');
-//var buildId = request.getParameter("buildId");
+    importClass(Packages.org.wso2.carbon.utility.qaportal.dss.util.JsonUtil);
+    importClass(Packages.org.wso2.carbon.utility.qaportal.QAPortalStats);
+
+    var carbon = require('carbon');
+
+    var qaPortal = carbon.server.osgiService('org.wso2.carbon.utility.qaportal.QAPortal');
+
+    var productId = request.getParameter('productId');
+
+    var productBuild = qaPortal.getLatestBuildOfProduct(productId);
+
+    var testStatus = QAPortalStats.getAutomationTestStatus(qaPortal, productBuild);
+
+    var status = JSON.parse(String(JsonUtil.getJsonFromPojo(testStatus)));
 
    function getData(){
 

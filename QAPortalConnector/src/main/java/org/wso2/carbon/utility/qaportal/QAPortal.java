@@ -128,4 +128,11 @@ public interface QAPortal {
     public TestCase getTestCaseById(int testCaseId);
 
 
+    /**
+     *
+     * @param productId
+     *
+     * @return
+     */
+    public ProductBuild getLatestBuildOfProduct(int productId);
 }

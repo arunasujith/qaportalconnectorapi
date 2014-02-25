@@ -95,7 +95,9 @@ public class QAPortalDataServiceConsumerImpl implements QAPortal{
             JsonNode arrayNode = JsonUtil.getNamedNode(json, "WSO2_QAP_PRODUCT_BUILDCollection")
                                                                                     .path("WSO2_QAP_PRODUCT_BUILD");
 
-            productBuildsList = JsonUtil.getPOJOListFromJson(arrayNode, ProductBuildMappingModel.class,
+            ObjectMapper mapper = JsonUtil.getDefaultMapper().setDateFormat(JsonUtil.DATE_FORMAT_I);
+
+            productBuildsList = JsonUtil.getPOJOListFromJson(mapper, arrayNode, ProductBuildMappingModel.class,
                     ProductBuild.class);
         }
         catch (IOException e) {
@@ -364,6 +366,39 @@ public class QAPortalDataServiceConsumerImpl implements QAPortal{
         }
 
         return testCase;
+    }
+
+    @Override
+    public ProductBuild getLatestBuildOfProduct(int productId) {
+
+        ProductBuild latestBuild = null;
+
+
+        List<ProductVersion> versions = getProductVersionsByProductId(productId);
+
+        List<ProductBuild> builds = new ArrayList<ProductBuild>();
+
+        for(ProductVersion pV: versions){
+
+            builds.addAll(getProductBuildsByVersionId(pV.getProductVersionId()));
+        }
+
+        latestBuild = builds.get(0);
+
+        for(ProductBuild pB:builds){
+
+            if(latestBuild==null){
+                latestBuild = pB;
+                continue;
+            }
+
+            if(pB!=null && pB.getReleaseDate().after(latestBuild.getReleaseDate())){
+
+                latestBuild = pB;
+            }
+        }
+
+        return latestBuild;
     }
 
     private void handleExceptions(Exception ex)
