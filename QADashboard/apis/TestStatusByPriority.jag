@@ -1,18 +1,18 @@
 <%
-    importClass(Packages.org.wso2.carbon.utility.qaportal.dss.util.JsonUtil);
-    importClass(Packages.org.wso2.carbon.utility.qaportal.QAPortalStats);
-
-    var carbon = require('carbon');
-
-    var qaPortal = carbon.server.osgiService('org.wso2.carbon.utility.qaportal.QAPortal');
-
-    var productId = request.getParameter('productId');
-
-    var productBuild = qaPortal.getLatestBuildOfProduct(productId);
-
-    var testStatus = QAPortalStats.getTestStatusByPriority(qaPortal, productBuild);
-
-    var status = JSON.parse(String(JsonUtil.getJsonFromPojo(testStatus)));
+//    importClass(Packages.org.wso2.carbon.utility.qaportal.dss.util.JsonUtil);
+//    importClass(Packages.org.wso2.carbon.utility.qaportal.QAPortalStats);
+//
+//    var carbon = require('carbon');
+//
+//    var qaPortal = carbon.server.osgiService('org.wso2.carbon.utility.qaportal.QAPortal');
+//
+//    var productId = request.getParameter('productId');
+//
+//    var productBuild = qaPortal.getLatestBuildOfProduct(productId);
+//
+//    var testStatus = QAPortalStats.getTestStatusByPriority(qaPortal, productBuild);
+//
+//    var status = JSON.parse(String(JsonUtil.getJsonFromPojo(testStatus)));
 
 	var labels = [[0, "Not Executed"], [1, "In Progress"], [2, "Failed"], [3, "Passed"]]
 	

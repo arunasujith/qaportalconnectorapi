@@ -1,18 +1,18 @@
 <%
-    importClass(Packages.org.wso2.carbon.utility.qaportal.dss.util.JsonUtil);
-    importClass(Packages.org.wso2.carbon.utility.qaportal.QAPortalStats);
-
-    var carbon = require('carbon');
-
-    var qaPortal = carbon.server.osgiService('org.wso2.carbon.utility.qaportal.QAPortal');
-
-    var productId = request.getParameter('productId');
-
-    var productBuild = qaPortal.getLatestBuildOfProduct(productId);
-
-    var testCoverage = QAPortalStats.getAutomationTestCoverage(qaPortal, productBuild);
-
-    var data = JSON.parse(String(JsonUtil.getJsonFromPojo(testCoverage)));
+//    importClass(Packages.org.wso2.carbon.utility.qaportal.dss.util.JsonUtil);
+//    importClass(Packages.org.wso2.carbon.utility.qaportal.QAPortalStats);
+//
+//    var carbon = require('carbon');
+//
+//    var qaPortal = carbon.server.osgiService('org.wso2.carbon.utility.qaportal.QAPortal');
+//
+//    var productId = request.getParameter('productId');
+//
+//    var productBuild = qaPortal.getLatestBuildOfProduct(productId);
+//
+//    var testCoverage = QAPortalStats.getAutomationTestCoverage(qaPortal, productBuild);
+//
+//    var data = JSON.parse(String(JsonUtil.getJsonFromPojo(testCoverage)));
 
     function getData(){
 

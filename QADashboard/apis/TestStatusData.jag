@@ -1,48 +1,48 @@
 <%
-    importClass(Packages.org.wso2.carbon.utility.qaportal.dss.util.JsonUtil);
-    importClass(Packages.org.wso2.carbon.utility.qaportal.QAPortalStats);
-
-    var carbon = require('carbon');
-
-    var qaPortal = carbon.server.osgiService('org.wso2.carbon.utility.qaportal.QAPortal');
-
-    var productId = request.getParameter('productId');
-
-    var productBuild = qaPortal.getLatestBuildOfProduct(productId);
-
-    var testStatus = QAPortalStats.getTestStatus(qaPortal, productBuild);
-
-    var status = JSON.parse(String(JsonUtil.getJsonFromPojo(testStatus)));
-
-    function getData() {
-
-        var data = [];
-        var obj = {};
-
-        obj["series0"] = {"label":"In Progress","data":status["IN PROGRESS"]};
-        obj["series1"] = {"label":"Passed","data":status["PASSED"]};
-        obj["series2"] = {"label":"Failed","data":status["FAILED"]};
-        obj["series4"] = {"label":"Not Executed","data":status["NOT EXECUTED"]};
-
-        data.push(obj);
-        return data;
-
-    }
+//    importClass(Packages.org.wso2.carbon.utility.qaportal.dss.util.JsonUtil);
+//    importClass(Packages.org.wso2.carbon.utility.qaportal.QAPortalStats);
 //
-//	function getData(){
+//    var carbon = require('carbon');
 //
-//		var data =  [
-//				{
-//					"series0" : {"color" : "#8bbc21", "label" : "Passed", "data" : "32"},
-//					"series1" : {"color" : "#910000", "label" : "Failed", "data" : "1"},
-//					"series2" : {"color" : "#2f7ed8", "label" : "In Progress", "data" : "13"},
-//					"series3" : {"color" : "#0d233a", "label" : "Not Executed", "data" : "12"}
-//				}
+//    var qaPortal = carbon.server.osgiService('org.wso2.carbon.utility.qaportal.QAPortal');
 //
-//			    ]
+//    var productId = request.getParameter('productId');
 //
-//		return data;
-//	}
+//    var productBuild = qaPortal.getLatestBuildOfProduct(productId);
+//
+//    var testStatus = QAPortalStats.getTestStatus(qaPortal, productBuild);
+//
+//    var status = JSON.parse(String(JsonUtil.getJsonFromPojo(testStatus)));
+//
+//    function getData() {
+//
+//        var data = [];
+//        var obj = {};
+//
+//        obj["series0"] = {"label":"In Progress","data":status["IN PROGRESS"]};
+//        obj["series1"] = {"label":"Passed","data":status["PASSED"]};
+//        obj["series2"] = {"label":"Failed","data":status["FAILED"]};
+//        obj["series4"] = {"label":"Not Executed","data":status["NOT EXECUTED"]};
+//
+//        data.push(obj);
+//        return data;
+//
+//    }
+
+	function getData(){
+
+		var data =  [
+				{
+					"series0" : {"color" : "#8bbc21", "label" : "Passed", "data" : "32"},
+					"series1" : {"color" : "#910000", "label" : "Failed", "data" : "1"},
+					"series2" : {"color" : "#2f7ed8", "label" : "In Progress", "data" : "13"},
+					"series3" : {"color" : "#0d233a", "label" : "Not Executed", "data" : "12"}
+				}
+
+			    ]
+
+		return data;
+	}
 
 	var options = {
 		   series: {
