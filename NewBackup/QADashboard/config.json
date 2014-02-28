@@ -1,0 +1,52 @@
+{
+    "server": {
+        "https": "https://ec2-54-205-154-153.compute-1.amazonaws.com:9643",
+        "http": "http://ec2-54-205-154-153.compute-1.amazonaws.com:9963"
+    },
+    "roles": {
+        "portal": {
+            "/permission/admin/login": ["ui.execute"]
+        }
+    },
+    "adminRole": "admin",
+    "user": {
+        "username": "admin",
+        "password": "admin"
+    },
+    "userRoles": ["portal"],
+    "permissions": {
+        "login": {
+            "/permission/admin/login": ["ui.execute"]
+        }
+    },
+    "userSpace": {
+        "space": "QADashboard",
+        "options": {
+            "type": "registry",
+            "serverUrl": "https://ec2-54-205-154-153.compute-1.amazonaws.com:9643/admin",
+            "path": "/_system/governance/users",
+            "username": "admin",
+            "password": "admin"
+        }
+    },
+    "storeSpace": {
+        "space": "store",
+        "options": {
+            "type": "registry",
+            "serverUrl": "https://ec2-54-205-154-153.compute-1.amazonaws.com:9643/admin",
+            "path": "/_system/governance/users",
+            "username": "admin",
+            "password": "admin"
+        }
+    },
+    "ssoConfiguration": {
+        "enabled": true,
+        "issuer": "QADashboard",
+        "identityProviderURL": "https://ec2-54-205-154-153.compute-1.amazonaws.com:9643/sso/samlsso.jag",
+        "keyStorePassword": "wso2carbon",
+        "identityAlias": "wso2carbon",
+        "responseSigningEnabled": "true",
+        "keyStoreName": "/repository/resources/security/wso2carbon.jks",
+        "appAcs" : "https://ec2-54-205-154-153.compute-1.amazonaws.com:9643/QADashboard/sso.jag",
+    }
+}

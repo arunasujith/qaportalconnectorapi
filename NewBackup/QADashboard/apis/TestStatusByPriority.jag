@@ -1,0 +1,82 @@
+<%
+//    importClass(Packages.org.wso2.carbon.utility.qaportal.dss.util.JsonUtil);
+//    importClass(Packages.org.wso2.carbon.utility.qaportal.QAPortalStats);
+//
+//    var carbon = require('carbon');
+//
+//    var qaPortal = carbon.server.osgiService('org.wso2.carbon.utility.qaportal.QAPortal');
+//
+//    var productId = request.getParameter('productId');
+//
+//    var productBuild = qaPortal.getLatestBuildOfProduct(productId);
+//
+//    var testStatus = QAPortalStats.getTestStatusByPriority(qaPortal, productBuild);
+//
+//    var status = JSON.parse(String(JsonUtil.getJsonFromPojo(testStatus)));
+
+	var labels = [[0, "Not Executed"], [1, "In Progress"], [2, "Failed"], [3, "Passed"]]
+	
+	function getData(){
+
+		var d1 = [];
+		for (var i = 0; i <= 3; i += 1) {
+			d1.push([i, parseInt(Math.random() * 30)]);
+		}
+
+		var d2 = [];
+		for (var i = 0; i <= 3; i += 1) {
+			d2.push([i, parseInt(Math.random() * 30)]);
+		}
+
+		var d3 = [];
+		for (var i = 0; i <= 3; i += 1) {
+			d3.push([i, parseInt(Math.random() * 30)]);
+		}
+
+		var data = [ {"data": d1,"label": "Low","color" : "#8bbc21"}, {"data": d2,"label": "Medium","color" : "#0d233a"}, {"data": d3,"label": "High","color" : "#2f7ed8"} ];
+
+
+		//reverse data
+		for (series in data){
+		  var s = data[series];
+		    for (i=0;i<s.data.length;i++){
+		       var tmp = s.data[i][0];
+		       s.data[i][0] = s.data[i][1];
+		       s.data[i][1] = tmp;        
+		    }
+		}
+
+		return [data];
+	}
+
+	var options = {
+		  series: {
+			stack: true,
+			lines: {
+			    show: false,
+			    steps: false
+			},
+			bars: {
+			    show: true,
+			    barWidth: 0.275,
+			    fill: 1.0,
+			    align: "center",
+			    horizontal:true	
+			}
+			
+		    },
+		    yaxis: {
+			ticks: labels
+		    },
+		    grid: {
+		            hoverable: true}
+	};
+	function labelFormatter(label, series) {
+		return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
+	}
+
+
+
+   print({'content':getData(),'options':options});
+%>
+ 

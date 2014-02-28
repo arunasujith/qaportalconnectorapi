@@ -1,0 +1,60 @@
+<%
+//    importClass(Packages.org.wso2.carbon.utility.qaportal.dss.util.JsonUtil);
+//    importClass(Packages.org.wso2.carbon.utility.qaportal.QAPortalStats);
+//
+//    var carbon = require('carbon');
+//
+//    var qaPortal = carbon.server.osgiService('org.wso2.carbon.utility.qaportal.QAPortal');
+//
+//    var productId = request.getParameter('productId');
+//
+//    var productBuild = qaPortal.getLatestBuildOfProduct(productId);
+//
+//    var testStatus = QAPortalStats.getAutomationTestStatus(qaPortal, productBuild);
+//
+//    var status = JSON.parse(String(JsonUtil.getJsonFromPojo(testStatus)));
+
+   function getData(){
+
+		var data =  [
+				{
+					"series0" : {"color" : "#8bbc21", "label" : "Passed", "data" : "14"}, 
+					"series1" : {"color" : "#910000", "label" : "Failed", "data" : "5"}
+				}
+
+			    ] 
+
+		return data;
+	}
+
+	var options = {
+		   series: {
+			pie: {
+			    show: true
+			}
+		    },
+		    legend: {
+			show: false
+		    },
+		     
+		    	grid: {
+				hoverable: true
+			},
+			tooltip: true,
+			tooltipOpts: {
+				content: "%p.0%, %s",
+				shifts: {
+					x: 20,
+					y: 0
+				},
+				defaultTheme: true
+			}
+	};
+	function labelFormatter(label, series) {
+		return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
+	}
+
+
+
+   print({'content':getData(),'options':options});
+%>
