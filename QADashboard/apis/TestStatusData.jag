@@ -6,7 +6,7 @@
 //
 //    var qaPortal = carbon.server.osgiService('org.wso2.carbon.utility.qaportal.QAPortal');
 //
-//    var productId = request.getParameter('productId');
+//    var productId = request.getParameter('productID');
 //
 //    var productBuild = qaPortal.getLatestBuildOfProduct(productId);
 //
@@ -19,10 +19,10 @@
 //        var data = [];
 //        var obj = {};
 //
-//        obj["series0"] = {"label":"In Progress","data":status["IN PROGRESS"]};
-//        obj["series1"] = {"label":"Passed","data":status["PASSED"]};
-//        obj["series2"] = {"label":"Failed","data":status["FAILED"]};
-//        obj["series4"] = {"label":"Not Executed","data":status["NOT EXECUTED"]};
+//        obj["series0"] = {"label":"In Progress","color" : "#2f7ed8","data":status["IN PROGRESS"]};
+//        obj["series1"] = {"label":"Passed","color" : "#8bbc21", "data":status["PASSED"]};
+//        obj["series2"] = {"label":"Failed","color" : "#910000","data":status["FAILED"]};
+//        obj["series4"] = {"label":"Not Executed","color" : "#0d233a","data":status["NOT EXECUTED"]};
 //
 //        data.push(obj);
 //        return data;

@@ -6,23 +6,36 @@
 //
 //    var qaPortal = carbon.server.osgiService('org.wso2.carbon.utility.qaportal.QAPortal');
 //
-//    var productId = request.getParameter('productId');
+//    var productId = request.getParameter('productID');
 //
 //    var productBuild = qaPortal.getLatestBuildOfProduct(productId);
 //
 //    var testStatus = QAPortalStats.getAutomationTestStatus(qaPortal, productBuild);
 //
 //    var status = JSON.parse(String(JsonUtil.getJsonFromPojo(testStatus)));
+//
+//    function getData(){
+//
+//    		var data =  [
+//    				{
+//    					"series0" : {"color" : "#8bbc21", "label" : "Passed", "data" : status["PASSED"]},
+//    					"series1" : {"color" : "#910000", "label" : "Failed", "data" : status["FAILED"]}
+//    				}
+//
+//    			    ]
+//
+//    		return data;
+//    }
 
    function getData(){
 
 		var data =  [
 				{
-					"series0" : {"color" : "#8bbc21", "label" : "Passed", "data" : "14"}, 
+					"series0" : {"color" : "#8bbc21", "label" : "Passed", "data" : "14"},
 					"series1" : {"color" : "#910000", "label" : "Failed", "data" : "5"}
 				}
 
-			    ] 
+			    ]
 
 		return data;
 	}

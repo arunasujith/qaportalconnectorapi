@@ -6,39 +6,71 @@
 //
 //    var qaPortal = carbon.server.osgiService('org.wso2.carbon.utility.qaportal.QAPortal');
 //
-//    var productId = request.getParameter('productId');
+//    var productId = request.getParameter('productID');
 //
 //    var productBuild = qaPortal.getLatestBuildOfProduct(productId);
 //
 //    var testStatus = QAPortalStats.getTestStatusByOwners(qaPortal, productBuild);
 //
 //    var status = JSON.parse(String(JsonUtil.getJsonFromPojo(testStatus)));
+//
+//	var labels =	[]
+//
+//	function getData(){
+//
+//	    var a1 = [];var a2 = [];var a3 = [];var a4 = [];
+//
+//
+//        var count = 1;
+//	    for(var owner in status) {
+//
+//            var ownerStatus = status[owner];
+//            labels.push([count, owner]);
+//            a1.push([count, ownerStatus["PASSED"] ]);
+//            a2.push([count, ownerStatus["FAILED"] ]);
+//            a3.push([count, ownerStatus["IN PROGRESS"] ]);
+//            a4.push([count, ownerStatus["NOT EXECUTED"] ]);
+//
+//            count++;
+//        }
+//
+//
+//
+//		var data = [
+//			    {label: "Passed", data: a1, bars: {fillColor: "#8bbc21"}, color: "#8bbc21"},
+//			    {label: "Failed", data: a2, bars: {fillColor: "#910000"}, color: "#910000"},
+//			    {label: "In Progress", data: a3, bars: {fillColor: "#2f7ed8"}, color: "#2f7ed8"},
+//			    {label: "Not Executed", data: a4, bars: {fillColor: "#0d233a"}, color: "#0d233a"}
+//			   ]
+//
+//		return [data];
+//	}
 
-	var labels =	[
-				[1, "Kavith"],
-				[2, "Aruna"],
-				[3, "Jayanga"],
-				[4, "Sajith"],
-				[5, "Pubudu"],
-				[6, "Uvindra"]
-			]
-	
-	function getData(){
+    var labels =	[
+                [1, "Kavith"],
+                [2, "Aruna"],
+                [3, "Jayanga"],
+                [4, "Sajith"],
+                [5, "Pubudu"],
+                [6, "Uvindra"]
+            ]
 
-		var a1 = [ [1, 14], [2, 13], [3, 26], [4, 44], [5, 17], [6, 9] ];
-		var a2 = [ [1, 5], [2, 1], [3, 4], [4, 13], [5, 7], [6, 9] ];
-		var a3 = [ [1, 22], [2, 16], [3, 14], [4, 6], [5, 17], [6, 21] ];
-		var a4 = [ [1, 10], [2, 8], [3, 4], [4, 13], [5, 2], [6, 19] ];
+    function getData(){
 
-		var data = [
-			    {label: "Passed", data: a1, bars: {fillColor: "#8bbc21"}, color: "#8bbc21"},
-			    {label: "Failed", data: a2, bars: {fillColor: "#910000"}, color: "#910000"},
-			    {label: "In Progress", data: a3, bars: {fillColor: "#2f7ed8"}, color: "#2f7ed8"},
-			    {label: "Not Executed", data: a4, bars: {fillColor: "#0d233a"}, color: "#0d233a"}
-			   ]
+        var a1 = [ [1, 14], [2, 13], [3, 26], [4, 44], [5, 17], [6, 9] ];
+        var a2 = [ [1, 5], [2, 1], [3, 4], [4, 13], [5, 7], [6, 9] ];
+        var a3 = [ [1, 22], [2, 16], [3, 14], [4, 6], [5, 17], [6, 21] ];
+        var a4 = [ [1, 10], [2, 8], [3, 4], [4, 13], [5, 2], [6, 19] ];
 
-		return [data];
-	}
+        var data = [
+                {label: "Passed", data: a1, bars: {fillColor: "#8bbc21"}, color: "#8bbc21"},
+                {label: "Failed", data: a2, bars: {fillColor: "#910000"}, color: "#910000"},
+                {label: "In Progress", data: a3, bars: {fillColor: "#2f7ed8"}, color: "#2f7ed8"},
+                {label: "Not Executed", data: a4, bars: {fillColor: "#0d233a"}, color: "#0d233a"}
+               ]
+
+        return [data];
+    }
 
 	var options = {
 		xaxis: {

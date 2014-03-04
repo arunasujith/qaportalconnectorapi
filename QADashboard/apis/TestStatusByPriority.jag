@@ -6,15 +6,56 @@
 //
 //    var qaPortal = carbon.server.osgiService('org.wso2.carbon.utility.qaportal.QAPortal');
 //
-//    var productId = request.getParameter('productId');
+//    var productId = request.getParameter('productID');
 //
 //    var productBuild = qaPortal.getLatestBuildOfProduct(productId);
 //
 //    var testStatus = QAPortalStats.getTestStatusByPriority(qaPortal, productBuild);
 //
 //    var status = JSON.parse(String(JsonUtil.getJsonFromPojo(testStatus)));
+//
+//	function getData(){
+//
+//		var d1 = [];
+//		var d2 = [];
+//		var d3 = [];
+//
+//		var low = status["LOW"];
+//		var medium = status["MEDIUM"];
+//		var high = status["HIGH"];
+//
+//		d1.push([0, low["NOT EXECUTED"]]);
+//		d1.push([1, low["IN PROGRESS"]]);
+//		d1.push([2, low["FAILED"]]);
+//		d1.push([3, low["PASSED"]]);
+//
+//		d2.push([0, medium["NOT EXECUTED"]]);
+//        d2.push([1, medium["IN PROGRESS"]]);
+//        d2.push([2, medium["FAILED"]]);
+//        d2.push([3, medium["PASSED"]]);
+//
+//        d3.push([0, high["NOT EXECUTED"]]);
+//        d3.push([1, high["IN PROGRESS"]]);
+//        d3.push([2, high["FAILED"]]);
+//        d3.push([3, high["PASSED"]]);
+//
+//		var data = [ {"data": d1,"label": "Low","color" : "#8bbc21"}, {"data": d2,"label": "Medium","color" : "#0d233a"}, {"data": d3,"label": "High","color" : "#2f7ed8"} ];
+//
+//
+//		//reverse data
+//		for (series in data){
+//		  var s = data[series];
+//		    for (i=0;i<s.data.length;i++){
+//		       var tmp = s.data[i][0];
+//		       s.data[i][0] = s.data[i][1];
+//		       s.data[i][1] = tmp;
+//		    }
+//		}
+//
+//		return [data];
+//	}
 
-	var labels = [[0, "Not Executed"], [1, "In Progress"], [2, "Failed"], [3, "Passed"]]
+
 	
 	function getData(){
 
@@ -42,12 +83,14 @@
 		    for (i=0;i<s.data.length;i++){
 		       var tmp = s.data[i][0];
 		       s.data[i][0] = s.data[i][1];
-		       s.data[i][1] = tmp;        
+		       s.data[i][1] = tmp;
 		    }
 		}
 
 		return [data];
 	}
+
+    var labels = [[0, "Not Executed"], [1, "In Progress"], [2, "Failed"], [3, "Passed"]]
 
 	var options = {
 		  series: {

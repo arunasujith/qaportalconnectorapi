@@ -6,23 +6,36 @@
 //
 //    var qaPortal = carbon.server.osgiService('org.wso2.carbon.utility.qaportal.QAPortal');
 //
-//    var productId = request.getParameter('productId');
+//    var productId = request.getParameter('productID');
 //
 //    var productBuild = qaPortal.getLatestBuildOfProduct(productId);
 //
 //    var testCoverage = QAPortalStats.getAutomationTestCoverage(qaPortal, productBuild);
 //
-//    var data = JSON.parse(String(JsonUtil.getJsonFromPojo(testCoverage)));
+//    var coverageData = JSON.parse(String(JsonUtil.getJsonFromPojo(testCoverage)));
+//
+//   function getData(){
+//
+//        var data =  [
+//                {
+//                    "series0" : {"color" : "#2f7ed8", "label" : "Covered", "data" :coverageData["YES"]},
+//                    "series1" : {"color" : "#0d233a", "label" : "Not Covered", "data" : coverageData["NO"]}
+//                }
+//
+//                ]
+//
+//        return data;
+//    }
 
     function getData(){
 
 		var data =  [
 				{
-					"series0" : {"color" : "#2f7ed8", "label" : "Covered", "data" : "32"}, 
+					"series0" : {"color" : "#2f7ed8", "label" : "Covered", "data" : "32"},
 					"series1" : {"color" : "#0d233a", "label" : "Not Covered", "data" : "22"}
 				}
 
-			    ] 
+			    ]
 
 		return data;
 	}
