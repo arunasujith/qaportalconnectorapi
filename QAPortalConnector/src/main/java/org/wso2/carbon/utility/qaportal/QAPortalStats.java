@@ -36,6 +36,9 @@ public class QAPortalStats {
 
         for(TestResult tR : results)
         {
+            if(tR == null){
+                continue;
+            }
             if(tR.getTestStatus().equals(TEST_STATUS_IN_PROGRESS)){
                 inPogressCount++;
             } else if(tR.getTestStatus().equals(TEST_STATUS_PASSED)){
@@ -63,7 +66,13 @@ public class QAPortalStats {
 
         for(TestCase tC:allTests){
 
+
             TestResult tR = portal.getTestResultByTestCaseAndBuild(build.getBuildId(), tC.getTestCaseId());
+
+
+            if(tR == null){
+                continue;
+            }
 
             if(tR.getTestStatus().equals(TEST_STATUS_PASSED)){
                 map.put(TEST_STATUS_PASSED, map.get(TEST_STATUS_PASSED) + 1);
@@ -91,6 +100,10 @@ public class QAPortalStats {
        for(TestCase tC:allTests){
 
            TestResult tR = portal.getTestResultByTestCaseAndBuild(build.getBuildId(), tC.getTestCaseId());
+
+           if(tR == null){
+               continue;
+           }
 
            if(tR.getTestStatus().equals(TEST_AUTOMATION_STATUS_COVERED)){
                map.put(TEST_AUTOMATION_STATUS_COVERED, map.get(TEST_AUTOMATION_STATUS_COVERED) + 1);
@@ -158,6 +171,10 @@ public class QAPortalStats {
 
         for(TestResult tR: testResults){
 
+            if(tR == null){
+                continue;
+            }
+
             if(tR.getTestStatus().equals(TEST_STATUS_PASSED)){
                data.put(TEST_STATUS_PASSED, data.get(TEST_STATUS_PASSED) + 1);
 
@@ -182,6 +199,9 @@ public class QAPortalStats {
         for(TestSuitScenarioAssociation entry:testScenarios)
         {
 
+            if(entry == null){
+                continue;
+            }
             if(data.containsKey(entry.getOwner())){
 
                 data.get(entry.getOwner()).addAll(portal.getTestCasesByTestScenarioId(entry.getTestScenarioId()));
@@ -202,6 +222,9 @@ public class QAPortalStats {
         for(TestSuitScenarioAssociation entry:testScenarios)
         {
 
+            if(entry == null){
+                continue;
+            }
             if(data.containsKey(entry.getPriority())){
 
                 data.get(entry.getPriority()).addAll(portal.getTestCasesByTestScenarioId(entry.getTestScenarioId()));
@@ -238,7 +261,10 @@ public class QAPortalStats {
 
         for(TestSuitScenarioAssociation tS:getTestScenariosForBuild(portal,build)){
 
+            if(tS!=null)
+            {
             testCaseList.addAll(portal.getTestCasesByTestScenarioId(tS.getTestScenarioId()));
+            }
         }
 
         return testCaseList;
